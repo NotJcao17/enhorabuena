@@ -1,0 +1,542 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Work+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "primary-container": "#00346d",
+                    "inverse-surface": "#2f3035",
+                    "inverse-primary": "#aac7ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc6",
+                    "primary": "#001f46",
+                    "on-error": "#ffffff",
+                    "background": "#f9f9fe",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004884",
+                    "surface-container": "#eeedf3",
+                    "surface-variant": "#e2e2e7",
+                    "tertiary": "#371700",
+                    "on-surface": "#1a1c20",
+                    "on-primary-container": "#7b9ede",
+                    "on-secondary-container": "#003e74",
+                    "success-stock": "#00346d",
+                    "secondary-container": "#6cabfd",
+                    "outline-variant": "#c3c6d1",
+                    "outline": "#737781",
+                    "tertiary-container": "#562900",
+                    "surface-tint": "#395e99",
+                    "surface-container-low": "#f4f3f9",
+                    "on-primary-fixed-variant": "#1e4680",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-container-high": "#e8e7ed",
+                    "surface-bright": "#f9f9fe",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "primary-fixed-dim": "#aac7ff",
+                    "on-tertiary-container": "#d38e5d",
+                    "on-tertiary-fixed": "#301400",
+                    "secondary": "#015fac",
+                    "on-primary-fixed": "#001b3e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#1a1c20",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "on-tertiary-fixed-variant": "#6c3a0f",
+                    "surface-container-highest": "#e2e2e7",
+                    "on-surface-variant": "#434750",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-dim": "#dad9df",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "48px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "price-sale": ["Work Sans"],
+                    "headline-lg-mobile": ["Work Sans"],
+                    "title-md": ["Work Sans"],
+                    "headline-lg": ["Work Sans"],
+                    "headline-xl": ["Work Sans"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-sale": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .table-shadow {
+            box-shadow: 0px 4px 12px rgba(26, 26, 46, 0.05);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c3c6d1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #737781;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex">
+<!-- NavigationDrawer Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 flex flex-col py-lg z-40 bg-surface border-r border-outline-variant hidden md:flex">
+<div class="px-md mb-xl">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Enhorabuena Admin</h1>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high transition-all px-4 py-3 mx-2 rounded-lg group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 mx-2" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high transition-all px-4 py-3 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-body-md">Scanner</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high transition-all px-4 py-3 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md">History</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-high transition-all px-4 py-3 mx-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-md pt-lg border-t border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">JD</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Admin User</p>
+<p class="text-[10px] text-on-surface-variant truncate">admin@betterware.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 pb-20 md:pb-0">
+<!-- TopAppBar Shell -->
+<header class="sticky top-0 w-full h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-2 hover:bg-surface-container-low rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">Inventario Betterware</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden sm:flex items-center gap-xs bg-primary text-on-primary px-lg py-sm rounded-full font-label-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Registrar producto
+                </button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors active:scale-95 duration-150 relative">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="max-w-[1280px] mx-auto p-margin-mobile md:p-margin-desktop space-y-xl">
+<!-- Bento-style Filters & Stats -->
+<section class="grid grid-cols-1 lg:grid-cols-4 gap-gutter">
+<!-- Search & Advanced Filters -->
+<div class="lg:col-span-3 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant table-shadow space-y-md">
+<div class="flex flex-wrap items-center gap-md">
+<!-- Search Bar -->
+<div class="flex-1 min-w-[240px] relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-10 pr-md py-2.5 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-surface-bright text-body-md" placeholder="Buscar por nombre, SKU o ubicación..." type="text">
+</div>
+<!-- Categories -->
+<select class="px-md py-2.5 rounded-lg border border-outline-variant bg-surface-bright text-body-md outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option value="">Categoría</option>
+<option>Cocina</option>
+<option>Hogar</option>
+<option>Baño</option>
+<option>Recámara</option>
+</select>
+<!-- Location -->
+<select class="px-md py-2.5 rounded-lg border border-outline-variant bg-surface-bright text-body-md outline-none focus:border-primary focus:ring-1 focus:ring-primary">
+<option value="">Ubicación</option>
+<option>Almacén A</option>
+<option>Pasillo 3</option>
+<option>Estante 12</option>
+</select>
+</div>
+<div class="flex flex-wrap items-center gap-xl pt-sm">
+<label class="flex items-center gap-sm cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-outline-variant transition-all checked:bg-primary checked:border-primary" type="checkbox">
+<span class="material-symbols-outlined absolute text-on-primary opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px]">check</span>
+</div>
+<span class="text-body-md select-none">Precio personalizado</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-outline-variant transition-all checked:bg-error checked:border-error" type="checkbox">
+<span class="material-symbols-outlined absolute text-on-primary opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px]">warning</span>
+</div>
+<span class="text-body-md select-none text-error font-medium">Precio rojo ⚠️</span>
+</label>
+</div>
+</div>
+<!-- Quick Actions / Mini Stats -->
+<div class="bg-primary-container text-on-primary-container p-lg rounded-xl flex flex-col justify-between">
+<div>
+<p class="font-label-md uppercase tracking-wider opacity-80">Total Artículos</p>
+<h3 class="font-headline-xl text-headline-xl mt-1">1,248</h3>
+</div>
+<div class="flex items-center justify-between mt-lg">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-primary-container bg-secondary flex items-center justify-center text-[10px] text-white">45</div>
+<div class="w-8 h-8 rounded-full border-2 border-primary-container bg-tertiary flex items-center justify-center text-[10px] text-white">12</div>
+</div>
+<button class="text-body-md font-medium flex items-center gap-xs hover:underline">
+                            Ver reporte <span class="material-symbols-outlined text-[18px]">trending_up</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Inventory Table Section -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant table-shadow overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Foto</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Producto</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">SKU</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Ubicación</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Estado</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider">Precio</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Disponible -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="w-12 h-12 rounded-lg bg-surface border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up studio photography of a sleek Betterware Kitchen organizer made of transparent acrylic and polished steel, minimalist clean white background, soft professional lighting, commercial product aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr8eb85mfZEfJ8IkLUnMcrZ7kU7x2QsegpaLux4m9ZxGjbgsJM03k4cuz8It4DkKLb3rOb7zOx3ZQE6SV2a_dBaQQPNaY6SFj3fLpJcFhgiUJjluD68oMK1K3kXz113lrhjIHLif12zO1lj4qpADFx2S4rRMtBhFWuIFfVVCbdK9kByBFrrwcb2rHHOnjAhunbCqXLnI9lFunGsyoDkA_ceKc61yb8zOi3jNMBem1snbzLWAUXvlel7kHxOH8L8s67lftUSKNp5I5o">
+</div>
+</td>
+<td class="px-lg py-md">
+<p class="font-title-md text-on-surface">Organizador Smart</p>
+<p class="text-xs text-on-surface-variant">Cocina &amp; Orden</p>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">BW-23091</td>
+<td class="px-lg py-md font-body-md text-on-surface">Almacén Central / A4</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#e6f4ea] text-[#1e7e34]">
+                                        Disponible
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<div class="space-y-1">
+<p class="font-price-sale text-primary">$349.00</p>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-all" title="Apartar">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+<button class="p-2 hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all" title="Vender">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg transition-all" title="Retirar">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Precio Rojo + Apartado -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="w-12 h-12 rounded-lg bg-surface border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High-quality lifestyle product image of a Betterware Eco-Bottle with vibrant blue accents, sitting on a wooden kitchen counter, natural sunlight streaming through a window, corporate modern photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApdvxdzNLUfyXTJIZnuwz5_d_lZOTRTUseaKymfPOf1KYYEACIdLEZXmtnUZCt8sW5xlrOU3Jm6R8s4GmshtkgVu1QcL7b72HY1ALVOUljvI-bYBEFyAjzT9j98HO5bvJSQu5swhrWLkzwa5rnGlOGKxwl5eQF-elTksk7VZ2SHfxtghCvUyY3SEXlIPKpA57u6qlnPh5smvVmBr7Nsv1SEzOwED7E5dg_KoFD8EEfduLnwa9t-O8d7rpRWFWB96wzYIrulsqQLkLd">
+</div>
+</td>
+<td class="px-lg py-md">
+<p class="font-title-md text-on-surface">Eco Cilindro Pro</p>
+<p class="text-xs text-on-surface-variant">Hidratación</p>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">BW-11422</td>
+<td class="px-lg py-md font-body-md text-on-surface">Estante Exhibición</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#fff3cd] text-[#856404]">
+                                        Apartado
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<div class="space-y-1">
+<p class="font-price-sale text-error">$189.00</p>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#fff4e5] text-[#d48806] border border-[#ffe7ba]">
+                                            Precio rojo ⚠️
+                                        </span>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm">
+<button class="p-2 hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all" title="Vender">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg transition-all" title="Retirar">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Precio Manual + Vendido -->
+<tr class="hover:bg-surface-container transition-colors group opacity-60">
+<td class="px-lg py-md">
+<div class="w-12 h-12 rounded-lg bg-surface border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Product shot of a Betterware bathroom shelf unit, white and chrome finish, elegant and functional, set against a clean marble wall background, soft diffused lighting, minimalist home organization theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG3WJFZ0DoEO9yOrRcB-PBonaWTrKuA-CU9yQb4Yd4iBGVkzjcjApThBTVSLDMtGGFhQ35Jk5bHMt6bMbyYkVEnonHE47T0tgs49f933iG8p_3VznMcbTs1jdXb7YeSYHdwSMSVRJP4-o1kJ8vY2zXlr6Vt6M3CU88eMw56LEmZCSQ4Q91CGT-sRE9roa8lmTYPBqMfh6_0RPEXxYhRBb_bxzgFEVKkJRFhNMG8CQyf7UxpKZYWBI2gI7_Z6wN7xWq-s3s6RpWPA7q">
+</div>
+</td>
+<td class="px-lg py-md">
+<p class="font-title-md text-on-surface">Estante Max</p>
+<p class="text-xs text-on-surface-variant">Baño</p>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">BW-88710</td>
+<td class="px-lg py-md font-body-md text-on-surface">Vendido (22/05)</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container-highest text-on-surface-variant">
+                                        Vendido
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<div class="space-y-1">
+<p class="font-price-sale text-on-surface-variant">$1,299.00</p>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed border border-secondary">
+                                            Precio manual
+                                        </span>
+</div>
+</td>
+<td class="px-lg py-md text-right text-xs font-medium text-on-surface-variant italic">
+                                    Sin acciones
+                                </td>
+</tr>
+<!-- Row 4: Disponible -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="w-12 h-12 rounded-lg bg-surface border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Betterware mop and bucket system, clean ergonomic design, deep blue and gray color palette, studio setting with bright reflective floor, emphasizing efficiency and cleanliness, professional product photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByQZ96PLyYav5wX0H8X9kqqRmOBfLTuG-87Y2kMi4okYW56eLQ-ZH3S6X0TjvRtk5tdoVhRkD32iMaM_htl_Yspc-T6BNV-06fRVdrQ-VrYz4KiGfCRSi71lnxJPx_IIPV150jtfgEa2X02YsHravBIFBlxFwy487IrWEMTIfE2HLP1kcLmowCfbum5P7WHXDbkUMgxu7OimXz5N9lzg0Ids97b8yYVVUq0djhtt0VMHvokau0lobg7gnW-VgtO9WFc0ZJLuGYJ5io">
+</div>
+</td>
+<td class="px-lg py-md">
+<p class="font-title-md text-on-surface">Mopa Giratoria</p>
+<p class="text-xs text-on-surface-variant">Limpieza</p>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">BW-55401</td>
+<td class="px-lg py-md font-body-md text-on-surface">Pasillo 2 / B1</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#e6f4ea] text-[#1e7e34]">
+                                        Disponible
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<div class="space-y-1">
+<p class="font-price-sale text-primary">$599.00</p>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-all" title="Apartar">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+<button class="p-2 hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all" title="Vender">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg transition-all" title="Retirar">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Disponible -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="w-12 h-12 rounded-lg bg-surface border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Contemporary Betterware LED desk lamp with touch controls, white minimalist finish, illuminating a organized home office setup, sharp focus, clean bright aesthetic, high-contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXZUHl7LFG3JONPlCXV_mFzrseCHuk_YyhBTnuS-gu64i-diN3pk7d4cciJoCAJqDN2QXSXwclGVCrqOHoUMEzkT3VzbyT-BuBGrQQRPIfM0nwxMfwH6OlFiTFQGalbymtVS3_Bej5lozn0i_Lc12xJ6Avsy-GKl8AZTH9Sfo57CB6jImKlAgdVWC6tHiMlFc-Yw0LFpY9JY6FU0lUW_IaXWEu8saafQUkhtrpBrOSIoybcIED6vKXnKuDP1Ii_05eg2DFjyY8dX6O">
+</div>
+</td>
+<td class="px-lg py-md">
+<p class="font-title-md text-on-surface">Lámpara Flex LED</p>
+<p class="text-xs text-on-surface-variant">Recámara</p>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">BW-00331</td>
+<td class="px-lg py-md font-body-md text-on-surface">Almacén Central / C9</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#e6f4ea] text-[#1e7e34]">
+                                        Disponible
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<div class="space-y-1">
+<p class="font-price-sale text-primary">$425.00</p>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-secondary-container hover:text-on-secondary-container rounded-lg transition-all" title="Apartar">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+<button class="p-2 hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all" title="Vender">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg transition-all" title="Retirar">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Apartado -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-lg py-md">
+<div class="w-12 h-12 rounded-lg bg-surface border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional product photo of a Betterware modular drawer divider set, light gray material, organized with stationery items, bright overhead lighting, extremely clean and orderly presentation, corporate modernist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtlAnMq3NnuNkHfDt7ONl73QpBJehXilMRiLP3eFu28nj6Ti90CuNz1YhoOBl5Qm9hGBjxpeYk60KaWPOJLNggaSVLN3uEDGRhQCYzmfG1L2PUfQueQ_N004PNFmHeSnJHpm_JzZ_gZZxDfT9rsqybDaz_RsqDAQmRWR26iWy4qDBJrbZru98HVx0K-ud5f743oN8V-RuHBqV9POk9fYXQY-bGJeP9uPoSBrgyc18WkYdkGJS4NetGewEn9ndWYF62NrBCzmdwOTIk">
+</div>
+</td>
+<td class="px-lg py-md">
+<p class="font-title-md text-on-surface">Divisores Ajustables</p>
+<p class="text-xs text-on-surface-variant">Hogar</p>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">BW-41229</td>
+<td class="px-lg py-md font-body-md text-on-surface">Pasillo 1 / A2</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#fff3cd] text-[#856404]">
+                                        Apartado
+                                    </span>
+</td>
+<td class="px-lg py-md">
+<div class="space-y-1">
+<p class="font-price-sale text-primary">$150.00</p>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed border border-secondary">
+                                            Precio manual
+                                        </span>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm">
+<button class="p-2 hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all" title="Vender">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg transition-all" title="Retirar">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="px-lg py-md bg-surface-container-low flex items-center justify-between border-t border-outline-variant">
+<p class="text-body-md text-on-surface-variant">Mostrando 6 de 1,248 productos</p>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container-high rounded-full disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-md">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high font-label-md transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high font-label-md transition-colors">3</button>
+<span class="px-1">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high font-label-md transition-colors">208</button>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Mobile FAB Replacement (BottomNavBar Shell) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-md">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-md">Admin</span>
+</a>
+</nav>
+<!-- Fixed Action Button (Contextual) -->
+<button class="md:hidden fixed bottom-20 right-4 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-50 active:scale-95 duration-150">
+<span class="material-symbols-outlined">add</span>
+</button>
+</main>
+<script>
+        // Simple Interaction: Toggle checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // Potential logic to filter table
+                console.log('Filtro cambiado:', this.nextElementSibling.innerText);
+            });
+        });
+
+        // Hover animation for action buttons
+        const actionButtons = document.querySelectorAll('button[title]');
+        actionButtons.forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-90'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-90'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-90'));
+        });
+    </script>
+</body></html>

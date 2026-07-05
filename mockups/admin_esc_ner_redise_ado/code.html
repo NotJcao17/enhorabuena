@@ -1,0 +1,226 @@
+<!DOCTYPE html><html class="light" lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lato:wght@400;700&amp;family=Work+Sans:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "primary-container": "#00346d",
+                    "inverse-surface": "#2f3035",
+                    "inverse-primary": "#aac7ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc6",
+                    "primary": "#00346d",
+                    "on-error": "#ffffff",
+                    "background": "#f9f9fe",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004884",
+                    "surface-container": "#eeedf3",
+                    "surface-variant": "#e2e2e7",
+                    "tertiary": "#371700",
+                    "on-surface": "#1a1c20",
+                    "on-primary-container": "#7b9ede",
+                    "on-secondary-container": "#003e74",
+                    "success-stock": "#00346d",
+                    "secondary-container": "#6cabfd",
+                    "outline-variant": "#c3c6d1",
+                    "outline": "#737781",
+                    "tertiary-container": "#562900",
+                    "surface-tint": "#395e99",
+                    "surface-container-low": "#f4f3f9",
+                    "on-primary-fixed-variant": "#1e4680",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-container-high": "#e8e7ed",
+                    "surface-bright": "#f9f9fe",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "primary-fixed-dim": "#aac7ff",
+                    "on-tertiary-container": "#d38e5d",
+                    "on-tertiary-fixed": "#301400",
+                    "secondary": "#015fac",
+                    "on-primary-fixed": "#001b3e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#1a1c20",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "on-tertiary-fixed-variant": "#6c3a0f",
+                    "surface-container-highest": "#e2e2e7",
+                    "on-surface-variant": "#434750",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-dim": "#dad9df",
+                    "on-error-container": "#93000a",
+                    "brand-accent": "#6cabfd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "8px",
+                    "lg": "12px",
+                    "xl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "48px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Lato", "Inter", "sans-serif"],
+                    "price-sale": ["Lato", "sans-serif"],
+                    "headline-lg-mobile": ["Lato", "sans-serif"],
+                    "title-md": ["Lato", "sans-serif"],
+                    "headline-lg": ["Lato", "sans-serif"],
+                    "headline-xl": ["Lato", "sans-serif"],
+                    "body-lg": ["Lato", "sans-serif"],
+                    "label-md": ["Lato", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-sale": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script></head><body class="bg-background text-on-background font-body-md text-body-md overflow-hidden h-screen flex flex-col">
+<!-- Header (Lato Typography + Primary Color) -->
+<header class="sticky top-0 w-full h-16 flex items-center justify-between px-margin-mobile z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150 text-primary">
+<span class="material-symbols-outlined" data-original-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">Enhorabuena</h1>
+</div>
+<div class="flex items-center gap-sm">
+<!-- Badge Scanned Counter (Integrated with Primary Color) -->
+<div class="flex items-center gap-xs bg-primary text-on-primary px-3 py-1.5 rounded-full font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[14px]">qr_code_scanner</span>
+<span>Escaneados: 5</span>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150 text-primary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+</div>
+</header>
+<!-- Scanner Viewport -->
+<main class="relative flex-1 w-full bg-black overflow-hidden">
+<!-- Mock Camera Feed -->
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-70 scale-105" data-alt="Warehouse background for scanner mockup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaVrX6kmijwJNnUWeT6LeriGVpjZgu2l_zPWdnOYI4eaMm5JnTL4wFZ1GMQsl2eUgSl9LtciTMB8rMniDBs_3E1pBEEUJtQDQRkzv336dMAF1fSFIvOYT_I5tzG7F7xQl2s2MtmszAuEBlfJVjkG-9g2e3NS9tX040ppweRo88TNfkb1BIhip33MjhH8Ls5YKTiDhwBiktwMk8o7g-JY31uc0fyTzWZM10LYMlLc_QBNi--I1h2XcVQEOwg4iVQuZqYivtLywsRDpV')"></div>
+</div>
+<!-- Scanning Overlay -->
+<div class="absolute inset-0 z-10 scanner-frame bg-black/60 pointer-events-none"></div>
+<!-- Scanner Brackets (Secondary Accent Color #6cabfd) -->
+<div class="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+<div class="relative w-[70%] h-[40%] max-w-[320px]">
+<div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-secondary-container rounded-tl-lg"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-secondary-container rounded-tr-lg"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-secondary-container rounded-bl-lg"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-secondary-container rounded-br-lg"></div>
+<!-- Laser -->
+<div class="absolute left-1 right-1 h-[2px] bg-red-500 laser-line z-30"></div>
+<div class="absolute -bottom-16 left-0 right-0 text-center">
+<p class="text-white font-label-md text-label-md bg-black/50 px-4 py-2 rounded-lg inline-block backdrop-blur-md">
+                        Centra el código de barras aquí
+                    </p>
+</div>
+</div>
+</div>
+<!-- Controls -->
+<div class="absolute top-4 right-4 z-30 flex flex-col gap-md">
+<button class="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined">flash_on</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+</div>
+<!-- Detected Product Card (Rounded Eight Corners + System Colors) -->
+<div class="absolute bottom-6 left-4 right-4 z-40 bg-surface-container-lowest rounded-lg shadow-2xl border border-outline-variant p-md transform transition-all duration-300 translate-y-0 opacity-100 flex flex-col gap-md" id="product-modal">
+<div class="flex gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-low border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Extendi Paraguas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPtFIPcgYq9KZgsaR7oYCILYHVPLtT9o4ZWYiZ7_Qy7DthzA65XEhPyH3o9ypzJx8meGpxJ6JYzF57ASta__aVhBgEqs0iiC6De3MNxlAkGJeepGmLlGAAF_dXmP_8QCQpcUwUwjS9zUfh1EXPbnx-2UQIvaUxAyYbcr8ggowUIPYmIkCnCgJiR3c_7e407HHTgM-esPd9885CpYpj-TWfH6LT0VcD33zv8vvaQ8wo9Izv6hPhJYQAad79rEyfnQm8dW6Fb7TxJ3S5">
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<span class="text-primary font-label-md text-[10px] tracking-widest uppercase font-bold">Detectado</span>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight font-bold">Extendi Paraguas</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">SKU: 26754</p>
+</div>
+</div>
+<div class="relative">
+<label class="font-label-md text-label-md text-on-surface-variant mb-1.5 block px-1">Ubicación de guardado</label>
+<div class="flex items-center justify-between bg-[#eef4fb] border border-primary-container/20 rounded-lg px-4 py-3 active:bg-primary-container/10 transition-colors cursor-pointer" onclick="this.classList.toggle('ring-1'); this.classList.toggle('ring-primary');">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<span class="font-body-md text-body-md text-primary font-medium">Caja 1</span>
+</div>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</div>
+<div class="flex gap-md pt-1">
+<button class="flex-1 border-2 border-primary text-primary font-bold py-3.5 rounded-lg active:bg-primary/5 transition-all text-sm uppercase tracking-wide">
+                    Cancelar
+                </button>
+<button class="flex-1 bg-primary text-on-primary font-bold py-3.5 rounded-lg shadow-md active:scale-[0.98] transition-all text-sm uppercase tracking-wide">
+                    Confirmar
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Professional Commerce System Style) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors w-full h-full pt-1" href="#">
+<span class="material-symbols-outlined text-[28px]">storefront</span>
+<span class="font-label-md text-[11px] mt-0.5">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors w-full h-full pt-1" href="#">
+<span class="material-symbols-outlined text-[28px]">search</span>
+<span class="font-label-md text-[11px] mt-0.5">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors w-full h-full pt-1" href="#">
+<span class="material-symbols-outlined text-[28px]">receipt_long</span>
+<span class="font-label-md text-[11px] mt-0.5">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold w-full h-full border-t-2 border-primary pt-1" href="#">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-label-md text-[11px] mt-0.5">Admin</span>
+</a>
+</nav>
+<div class="h-20 w-full flex-shrink-0"></div>
+<script>
+        const modal = document.getElementById('product-modal');
+        let modalVisible = true;
+
+        document.querySelector('main').addEventListener('click', (e) => {
+            if (e.target.closest('button')) return;
+            
+            modalVisible = !modalVisible;
+            if (modalVisible) {
+                modal.classList.remove('translate-y-full', 'opacity-0');
+                modal.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                modal.classList.add('translate-y-full', 'opacity-0');
+                modal.classList.remove('translate-y-0', 'opacity-100');
+            }
+        });
+
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(12);
+                }
+            });
+        });
+    </script>
+</body></html>

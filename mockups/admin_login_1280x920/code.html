@@ -1,0 +1,212 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Enhorabuena Admin - Iniciar Sesión</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Work Sans & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Work+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "primary-container": "#00346d",
+                    "inverse-surface": "#2f3035",
+                    "inverse-primary": "#aac7ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc6",
+                    "primary": "#001f46",
+                    "on-error": "#ffffff",
+                    "background": "#f9f9fe",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004884",
+                    "surface-container": "#eeedf3",
+                    "surface-variant": "#e2e2e7",
+                    "tertiary": "#371700",
+                    "on-surface": "#1a1c20",
+                    "on-primary-container": "#7b9ede",
+                    "on-secondary-container": "#003e74",
+                    "success-stock": "#00346d",
+                    "secondary-container": "#6cabfd",
+                    "outline-variant": "#c3c6d1",
+                    "outline": "#737781",
+                    "tertiary-container": "#562900",
+                    "surface-tint": "#395e99",
+                    "surface-container-low": "#f4f3f9",
+                    "on-primary-fixed-variant": "#1e4680",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-container-high": "#e8e7ed",
+                    "surface-bright": "#f9f9fe",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "primary-fixed-dim": "#aac7ff",
+                    "on-tertiary-container": "#d38e5d",
+                    "on-tertiary-fixed": "#301400",
+                    "secondary": "#015fac",
+                    "on-primary-fixed": "#001b3e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#1a1c20",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "on-tertiary-fixed-variant": "#6c3a0f",
+                    "surface-container-highest": "#e2e2e7",
+                    "on-surface-variant": "#434750",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-dim": "#dad9df",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "48px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "price-sale": ["Work Sans"],
+                    "headline-lg-mobile": ["Work Sans"],
+                    "title-md": ["Work Sans"],
+                    "headline-lg": ["Work Sans"],
+                    "headline-xl": ["Work Sans"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-sale": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-card {
+            box-shadow: 0px 4px 12px rgba(26, 26, 46, 0.05);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface min-h-[920px] flex items-center justify-center p-md">
+<!-- Login Container -->
+<main class="w-full max-w-md h-[920px] flex items-center justify-center relative">
+<!-- Animated Background Decoration (Subtle) -->
+<div class="fixed inset-0 pointer-events-none opacity-30">
+<div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary-fixed-dim blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary-fixed-dim blur-[120px]"></div>
+</div>
+<!-- Central Card -->
+<div class="login-card w-full bg-surface-container-lowest rounded-xl p-lg md:p-xl relative z-10 border border-outline-variant">
+<!-- Logo / Brand Anchor -->
+<div class="text-center mb-xl">
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">
+                    Enhorabuena
+                </h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs">
+                    ADMINISTRATION PORTAL
+                </p>
+</div>
+<!-- Login Form -->
+<form class="space-y-lg" id="loginForm">
+<!-- Input Group: User -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block px-xs" for="username">
+                        Usuario
+                    </label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+                            person
+                        </span>
+<input class="w-full pl-xl pr-md py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-on-surface" id="username" name="username" placeholder="nombre@ejemplo.com" required="" type="text">
+</div>
+</div>
+<!-- Input Group: Password -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block px-xs" for="password">
+                        Contraseña
+                    </label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">
+                            lock
+                        </span>
+<input class="w-full pl-xl pr-md py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-on-surface" id="password" name="password" placeholder="••••••••" required="" type="password">
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember & Forgot -->
+<div class="flex items-center justify-between px-xs">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox">
+<span class="font-label-md text-label-md text-on-surface-variant">Recordarme</span>
+</label>
+<a class="font-label-md text-label-md text-primary font-bold hover:underline" href="#">
+                        ¿Olvidó su clave?
+                    </a>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary py-lg rounded-full font-title-md text-title-md active:scale-95 transition-transform shadow-lg shadow-primary/10 flex items-center justify-center gap-2" type="submit">
+                    Iniciar sesión
+                    <span class="material-symbols-outlined">login</span>
+</button>
+</form>
+<!-- Footer Message -->
+<div class="mt-xl pt-lg border-t border-outline-variant text-center">
+<p class="font-label-md text-label-md text-on-surface-variant">
+                    Acceso restringido a personal autorizado.
+                </p>
+</div>
+</div>
+<!-- System Image (Conceptual Illustration) -->
+</main>
+<script>
+        // Simple Interaction: Button scale effect and form prevention
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Cargando...';
+            
+            setTimeout(() => {
+                alert('Bienvenido al panel de administración de Enhorabuena.');
+                btn.innerHTML = 'Iniciar sesión <span class="material-symbols-outlined">login</span>';
+            }, 1000);
+        });
+
+        // Toggle Password visibility
+        const togglePass = document.querySelector('button[type="button"]');
+        const passInput = document.getElementById('password');
+        togglePass.addEventListener('click', () => {
+            const isPass = passInput.type === 'password';
+            passInput.type = isPass ? 'text' : 'password';
+            togglePass.innerHTML = `<span class="material-symbols-outlined text-[20px]">${isPass ? 'visibility_off' : 'visibility'}</span>`;
+        });
+    </script>
+</body></html>

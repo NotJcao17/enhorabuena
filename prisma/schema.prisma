@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UnitStatus {
+  available
+  reserved
+  sold
+  withdrawn
+}
+
+model CatalogProduct {
+  id                  Int             @id @default(autoincrement())
+  sku                 String          @unique
+  shopifyId           String
+  title               String
+  handle              String
+  bodyHtml            String
+  productType         String
+  priceBetterware     Decimal
+  compareAtPrice      Decimal?
+  activeBetterware    Boolean
+  availableBetterware Boolean
+  tags                Json
+  images              Json
+  publishedAt         DateTime?
+  betterwareUpdatedAt DateTime?
+  lastSyncAt          DateTime
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  units               InventoryUnit[]
+}
+
+model Location {
+  id        Int             @id @default(autoincrement())
+  name      String
+  sortOrder Int
+  createdAt DateTime        @default(now())
+
+  units     InventoryUnit[]
+}
+
+model InventoryUnit {
+  id               Int            @id @default(autoincrement())
+  catalogProductId Int
+  locationId       Int?
+  status           UnitStatus     @default(available)
+  customPrice      Decimal?
+  notes            String?
+  registeredAt     DateTime       @default(now())
+  statusChangedAt  DateTime       @default(now())
+  soldAt           DateTime?
+  salePrice        Decimal?
+  saleReversed     Boolean        @default(false)
+  saleReversedAt   DateTime?
+
+  catalogProduct   CatalogProduct @relation(fields: [catalogProductId], references: [id])
+  location         Location?      @relation(fields: [locationId], references: [id])
+}
+
+model CustomProduct {
+  id            Int                @id @default(autoincrement())
+  name          String
+  description   String?
+  price         Decimal
+  stock         Int                @default(0)
+  reservedCount Int                @default(0)
+  soldCount     Int                @default(0)
+  images        Json
+  category      String?
+  isActive      Boolean            @default(true)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  sales         CustomSaleRecord[]
+}
+
+model CustomSaleRecord {
+  id              Int           @id @default(autoincrement())
+  customProductId Int
+  quantity        Int
+  salePrice       Decimal
+  soldAt          DateTime      @default(now())
+  notes           String?
+  reversed        Boolean       @default(false)
+  reversedAt      DateTime?
+
+  customProduct   CustomProduct @relation(fields: [customProductId], references: [id])
+}
+
+model AdminUser {
+  id           Int    @id @default(autoincrement())
+  username     String @unique
+  passwordHash String
+  name         String
+}
+
+model SyncLog {
+  id                  Int       @id @default(autoincrement())
+  startedAt           DateTime  @default(now())
+  finishedAt          DateTime?
+  productsCreated     Int       @default(0)
+  productsUpdated     Int       @default(0)
+  productsDeactivated Int       @default(0)
+  newProducts         Json?
+  status              String    // "success" or "error"
+  errorMessage        String?
+}
+
+model AppConfig {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+}

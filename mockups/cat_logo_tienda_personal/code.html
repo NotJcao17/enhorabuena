@@ -1,0 +1,306 @@
+<!DOCTYPE html><html class="light" lang="es" style="width: 390px; height: 1307px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Enhorabuena - Tienda Personal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Work+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#a4c9ff",
+                    "primary-container": "#00346d",
+                    "inverse-surface": "#2f3035",
+                    "inverse-primary": "#aac7ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc6",
+                    "primary": "#001f46",
+                    "on-error": "#ffffff",
+                    "background": "#f9f9fe",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004884",
+                    "surface-container": "#eeedf3",
+                    "surface-variant": "#e2e2e7",
+                    "tertiary": "#371700",
+                    "on-surface": "#1a1c20",
+                    "on-primary-container": "#7b9ede",
+                    "on-secondary-container": "#003e74",
+                    "success-stock": "#019d71", /* Custom brand green from prompt */
+                    "secondary-container": "#6cabfd",
+                    "outline-variant": "#c3c6d1",
+                    "outline": "#737781",
+                    "tertiary-container": "#562900",
+                    "surface-tint": "#395e99",
+                    "surface-container-low": "#f4f3f9",
+                    "on-primary-fixed-variant": "#1e4680",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "surface-container-high": "#e8e7ed",
+                    "surface-bright": "#f9f9fe",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f1f0f6",
+                    "primary-fixed-dim": "#aac7ff",
+                    "on-tertiary-container": "#d38e5d",
+                    "on-tertiary-fixed": "#301400",
+                    "secondary": "#015fac",
+                    "on-primary-fixed": "#001b3e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#1a1c20",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "on-tertiary-fixed-variant": "#6c3a0f",
+                    "surface-container-highest": "#e2e2e7",
+                    "on-surface-variant": "#434750",
+                    "secondary-fixed": "#d4e3ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#001c39",
+                    "surface-dim": "#dad9df",
+                    "on-error-container": "#93000a",
+                    "custom-green-bg": "#edf9f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-desktop": "48px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "price-sale": ["Work Sans"],
+                    "headline-lg-mobile": ["Work Sans"],
+                    "title-md": ["Work Sans"],
+                    "headline-lg": ["Work Sans"],
+                    "headline-xl": ["Work Sans"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-sale": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .product-card-shadow {
+            box-shadow: 0px 4px 12px rgba(26, 26, 46, 0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full h-16 flex items-center justify-between px-margin-mobile z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center p-xs active:scale-95 duration-150 text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Enhorabuena</h1>
+</div>
+<div class="relative flex items-center justify-center">
+<button class="flex items-center justify-center p-xs active:scale-95 duration-150 text-primary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<span class="absolute -top-1 -right-1 bg-success-stock text-white text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-full">2</span>
+</div>
+</header>
+<main class="pb-24">
+<!-- Section Toggle -->
+<section class="px-margin-mobile py-lg">
+<div class="bg-surface-container-high p-1 rounded-xl flex items-center w-full">
+<button class="flex-1 py-2 text-center font-label-md text-label-md rounded-lg transition-all text-on-surface-variant" id="toggle-betterware" onclick="toggleActive('betterware')">
+                    Betterware
+                </button>
+<button class="flex-1 py-2 text-center font-label-md text-label-md rounded-lg transition-all bg-success-stock text-white font-bold flex items-center justify-center gap-1" id="toggle-tienda" onclick="toggleActive('tienda')">
+                    Tienda <span class="block w-2 h-2 rounded-full bg-white"></span>
+</button>
+</div>
+</section>
+<!-- Search Bar -->
+<section class="px-margin-mobile pb-lg">
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-success-stock transition-colors">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white border border-outline-variant rounded-xl focus:outline-none focus:border-success-stock focus:ring-1 focus:ring-success-stock transition-all shadow-sm" placeholder="Buscar productos artesanales..." type="text">
+</div>
+</section>
+<!-- Category Chips -->
+<section class="pb-lg overflow-x-auto hide-scrollbar">
+<div class="flex gap-sm px-margin-mobile w-max">
+<button class="px-lg py-2 rounded-full bg-success-stock text-white font-label-md text-label-md font-bold">Todo</button>
+<button class="px-lg py-2 rounded-full bg-custom-green-bg text-success-stock border border-success-stock/20 font-label-md text-label-md">Ropa</button>
+<button class="px-lg py-2 rounded-full bg-custom-green-bg text-success-stock border border-success-stock/20 font-label-md text-label-md">Accesorios</button>
+<button class="px-lg py-2 rounded-full bg-custom-green-bg text-success-stock border border-success-stock/20 font-label-md text-label-md">Decoración</button>
+<button class="px-lg py-2 rounded-full bg-custom-green-bg text-success-stock border border-success-stock/20 font-label-md text-label-md">Artesanía</button>
+</div>
+</section>
+<!-- Featured Banner (Atmospheric) -->
+
+<!-- Product Grid -->
+<section class="px-margin-mobile">
+<div class="grid grid-cols-2 gap-md">
+<!-- Product 1 -->
+<div class="product-card-shadow bg-white rounded-xl overflow-hidden flex flex-col border border-outline-variant hover:translate-y-[-4px] transition-transform duration-300">
+<div class="aspect-square relative overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A detailed studio shot of a white cotton t-shirt featuring intricate, colorful floral hand-embroidery around the neckline. The garment is presented in a flat-lay composition on a minimalist light grey background. The lighting is crisp and even, highlighting the texture of the embroidery threads. Corporate modern style, clean and organized presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmdRlrnC87s3IOSyj9RMrfHFeUzodOnxMx4URz_Esn_pIxyH0_9627D3XtrfXjzq6TpQUxfOKKDWpOo-pr2afuoyW05L_amNaK0w-ruzEqAaOgwhrvxQHJuE5FwU_pAPv857pQMF3MxneCXmlKy3nYuqg1nnq1oZXsRwcLHs54d2ZG1ZQmRiJtiePaIrfNEL-Jx5JQImh0wTZPRFX2jol26NVJoPzzJaHsUgK_MWY1iXLMzIxABHYb_ZUCdgE7m4Mlu-hbSVoIqbFG">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center text-outline active:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-success-stock uppercase tracking-tighter mb-1">Textiles</span>
+<h3 class="font-body-md text-body-md text-on-surface line-clamp-2 leading-tight mb-2 flex-grow">Camiseta bordada a mano floral</h3>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sale text-price-sale text-primary">$250</span>
+<button class="w-8 h-8 rounded-lg bg-success-stock text-white flex items-center justify-center active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card-shadow bg-white rounded-xl overflow-hidden flex flex-col border border-outline-variant hover:translate-y-[-4px] transition-transform duration-300">
+<div class="aspect-square relative overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A close-up photograph of a beautifully woven artisanal handbag made of natural palm fibers with leather handles. The bag sits on a minimalist white stone surface with soft ambient shadows. The overall aesthetic is professional, clean, and highlights the high-quality craftsmanship and texture of the natural materials. Modern domestic elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0aibBaU7IsxzmGTSJp9Biqovcy6ONdoYQ5kDpl7puLYiPyC3S-05Q2lVQUCf7u6TtAy4MeTSE0mlliDA41KSJoNLr2LzNXR5d9zZxbCQ94DNxxic5ydtOdVfyGrLdemMek65rAfG_S3_HchFUB77XrwconKp9JkXifp6MjKbMXyGqY_YsO90yygO2UMulEfSzyGJsrTffcZPHVMEA_DnO5r62qRprSZlUL1RW56p-UhfPDzrljK_CJr04FeDAya2fD5u0kb_IMtcJ">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-success-stock uppercase tracking-tighter mb-1">Accesorios</span>
+<h3 class="font-body-md text-body-md text-on-surface line-clamp-2 leading-tight mb-2 flex-grow">Bolsa artesanal de palma tejida</h3>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sale text-price-sale text-primary">$180</span>
+<button class="w-8 h-8 rounded-lg bg-success-stock text-white flex items-center justify-center active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card-shadow bg-white rounded-xl overflow-hidden flex flex-col border border-outline-variant hover:translate-y-[-4px] transition-transform duration-300">
+<div class="aspect-square relative overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of elegant silver earrings with a traditional filigree pattern. The earrings are displayed on a white velvet jewelry stand. The lighting is sharp and emphasizes the metallic sheen and delicate silver work. The background is a clean, neutral cream color, evoking luxury and meticulous organization. Corporate lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8LGutaeabqvMKZLdFApeeGNA3DoaU9qgRCOgLbR3nCO-wap6d8jESVU7njWmBfmh_FkeXE1yyzkBgBCysf48g9AukSp7F_o_LdIvIW11pZYqct3DJVSk2aN4mPYsFJbG6wLQZ29yk03I9xzR1bW1vuYgSSqYZtKflD19IzTJnWjbm1U7RWGpvVg6uNSVD3qaW1AbtndkY2CyhHCDtcXPNhWx75fgc8TPIsVi-veV5iNacUeq0PpHxdfibu_gMmySeKUia2rZmZRXg">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-success-stock uppercase tracking-tighter mb-1">Joyería</span>
+<h3 class="font-body-md text-body-md text-on-surface line-clamp-2 leading-tight mb-2 flex-grow">Aretes de plata filigrana</h3>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sale text-price-sale text-primary">$120</span>
+<button class="w-8 h-8 rounded-lg bg-success-stock text-white flex items-center justify-center active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 4 (Placeholder to balance grid) -->
+<div class="product-card-shadow bg-white rounded-xl overflow-hidden flex flex-col border border-outline-variant hover:translate-y-[-4px] transition-transform duration-300">
+<div class="aspect-square relative overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A clean product shot of a hand-painted ceramic bowl with geometric patterns in blue and green. The bowl is positioned in the center of a minimalist kitchen counter made of light-colored marble. The lighting is bright and airy, suggesting a sense of calm and orderly domestic life. The style is premium, high-contrast, and focused on material fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaQcySBf67r65Awb3QEJsW2kwrfZBUVXUXUJfUEDn5TayxfheNNSyx90yKTv3s5_pp5F0TJHQnKXP1sXXQKsyIdEj4E6E38lB2-_ifTV4HL_AcrU8vMS4SYHGvNwsuy1JBhlJnNiu1Wndn4i21GVOnHsaGnH8esBlPctMr20iETC05GVd5fDtlpNXlhRDw2gSo54TBij9EvQkMsd7vmAqAcqpuHiWs3ZjQuXh_R5I5VsbY58K6YYvXRqSzIXjOTLbCaRwMURtrXNqN">
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="font-label-md text-label-md text-success-stock uppercase tracking-tighter mb-1">Hogar</span>
+<h3 class="font-body-md text-body-md text-on-surface line-clamp-2 leading-tight mb-2 flex-grow">Cuenco de cerámica geométrico</h3>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-sale text-price-sale text-primary">$145</span>
+<button class="w-8 h-8 rounded-lg bg-success-stock text-white flex items-center justify-center active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Load More Button -->
+<section class="px-margin-mobile py-xl flex justify-center">
+<button class="px-xl py-3 rounded-full border-2 border-success-stock text-success-stock font-bold hover:bg-custom-green-bg transition-colors active:scale-95 duration-150">
+                Cargar más productos
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container-lowest border-t border-outline-variant">
+<button class="flex flex-col items-center justify-center text-success-stock font-bold active:scale-90 duration-150">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin</span>
+</button>
+</nav>
+<script>
+        function toggleActive(target) {
+            const betterwareBtn = document.getElementById('toggle-betterware');
+            const tiendaBtn = document.getElementById('toggle-tienda');
+            
+            if (target === 'betterware') {
+                betterwareBtn.classList.add('bg-success-stock', 'text-white', 'font-bold');
+                betterwareBtn.classList.remove('text-on-surface-variant');
+                betterwareBtn.innerHTML = 'Betterware <span class="block w-2 h-2 rounded-full bg-white"></span>';
+                
+                tiendaBtn.classList.remove('bg-success-stock', 'text-white', 'font-bold');
+                tiendaBtn.classList.add('text-on-surface-variant');
+                tiendaBtn.innerHTML = 'Tienda';
+            } else {
+                tiendaBtn.classList.add('bg-success-stock', 'text-white', 'font-bold');
+                tiendaBtn.classList.remove('text-on-surface-variant');
+                tiendaBtn.innerHTML = 'Tienda <span class="block w-2 h-2 rounded-full bg-white"></span>';
+                
+                betterwareBtn.classList.remove('bg-success-stock', 'text-white', 'font-bold');
+                betterwareBtn.classList.add('text-on-surface-variant');
+                betterwareBtn.innerHTML = 'Betterware';
+            }
+        }
+    </script>
+
+
+
+</body></html>

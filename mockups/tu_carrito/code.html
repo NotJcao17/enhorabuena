@@ -1,0 +1,251 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tu Carrito - Enhorabuena</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Work+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#a4c9ff",
+                        "primary-container": "#00346d",
+                        "inverse-surface": "#2f3035",
+                        "inverse-primary": "#aac7ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdcc6",
+                        "primary": "#001f46",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9fe",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004884",
+                        "surface-container": "#eeedf3",
+                        "surface-variant": "#e2e2e7",
+                        "tertiary": "#371700",
+                        "on-surface": "#1a1c20",
+                        "on-primary-container": "#7b9ede",
+                        "on-secondary-container": "#003e74",
+                        "success-stock": "#00346d",
+                        "secondary-container": "#6cabfd",
+                        "outline-variant": "#c3c6d1",
+                        "outline": "#737781",
+                        "tertiary-container": "#562900",
+                        "surface-tint": "#395e99",
+                        "surface-container-low": "#f4f3f9",
+                        "on-primary-fixed-variant": "#1e4680",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "surface-container-high": "#e8e7ed",
+                        "surface-bright": "#f9f9fe",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f0f6",
+                        "primary-fixed-dim": "#aac7ff",
+                        "on-tertiary-container": "#d38e5d",
+                        "on-tertiary-fixed": "#301400",
+                        "secondary": "#015fac",
+                        "on-primary-fixed": "#001b3e",
+                        "primary-fixed": "#d6e3ff",
+                        "on-background": "#1a1c20",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "on-tertiary-fixed-variant": "#6c3a0f",
+                        "surface-container-highest": "#e2e2e7",
+                        "on-surface-variant": "#434750",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001c39",
+                        "surface-dim": "#dad9df",
+                        "on-error-container": "#93000a",
+                        "whatsapp": "#25D366"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "price-sale": ["Work Sans"],
+                        "headline-lg-mobile": ["Work Sans"],
+                        "title-md": ["Work Sans"],
+                        "headline-lg": ["Work Sans"],
+                        "headline-xl": ["Work Sans"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "price-sale": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        .cart-card-shadow {
+            box-shadow: 0px 4px 12px rgba(26, 26, 46, 0.05);
+        }
+        .active-scale:active {
+            transform: scale(0.95);
+            transition: transform 0.15s ease;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full h-16 flex items-center justify-between px-margin-mobile z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="active-scale flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Tu Carrito (3)</h1>
+</div>
+<button class="active-scale flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</button>
+</header>
+<main class="max-w-[1280px] mx-auto px-margin-mobile py-lg pb-40">
+<!-- Cart Items List -->
+<div class="flex flex-col gap-md">
+<!-- Item 1: Luz Estrella -->
+<div class="flex items-start gap-md p-md bg-surface-container-lowest rounded-xl cart-card-shadow border border-outline-variant group hover:translate-y-[-4px] transition-all duration-200">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A minimalist product photography of a stylish star-shaped lamp sitting on a clean white desk. The lighting is soft and warm, highlighting the matte finish of the object against a pristine white background. The composition is elegant and center-focused, following a corporate modernism aesthetic with high fidelity and crisp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCsE0GygXbA_pvzUgB5NRohqVa_I8UnKUDNjtHdtp7D9bocszJKNXRgSXpkkvy2d_kw0OFDoFXKCRiC-5N-GvTjAXlS_gNf20mSimWRGDoZFrN_3LR9ie0Qg6uDMqlMgMfoSM-rMuPUmOgW9JppAp0rbx1_vJ-XGthVU_359VICjtxAeWmSm5IEMgo-gKDkmdwXGEaWBBpeaGE7SmRoVujmqxGXX2QhUhTJA71w0j7eKf5S3a4ddHeYvz00WZfxQgyDyegjifLu-m0">
+</div>
+<div class="flex flex-col flex-grow justify-between min-h-[96px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="bg-primary-container text-on-primary-container font-label-md text-label-md px-2 py-0.5 rounded-full mb-1">BW</span>
+<button class="text-on-surface-variant hover:text-error transition-colors active-scale">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Luz Estrella</h3>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-price-sale text-price-sale text-primary">$99.90</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Camiseta bordada -->
+<div class="flex items-start gap-md p-md bg-surface-container-lowest rounded-xl cart-card-shadow border border-outline-variant group hover:translate-y-[-4px] transition-all duration-200">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A high-quality lifestyle product shot of a premium white cotton t-shirt with delicate, professional custom embroidery. The fabric texture is clearly visible under bright, natural studio lighting. The background is a soft neutral grey, creating a clean and sophisticated atmosphere suitable for a high-end clothing catalog. Corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSxyexcdLRIV2uUHenxbQ-G5KzgBp66MYZkxi3pRMpTLya0M3uSKh9XVBeQxmjxjji1JbTtFcr7UmpSCw6s1VkV--45T6OYAFh6vJA7fnD4Sj6jfX-oRKqLd30WIXi-9JNyZsV0jeGwtuZDJ5EjVwU3Hh32fE6ylAa7Zs55WqN-DfxO0Fr4vbHUZs8tSFLDCBlhu2f7SoKBEDLTkwLNZbVoQrqxDz2922OsmP7OEz7n_vtPDN2szjsiyjilYuStMAVC-YdIzosUQI_">
+</div>
+<div class="flex flex-col flex-grow justify-between min-h-[96px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="bg-surface-container-highest text-on-surface-variant font-label-md text-label-md px-2 py-0.5 rounded-full mb-1">Personal</span>
+<button class="text-on-surface-variant hover:text-error transition-colors active-scale">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Camiseta bordada</h3>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-price-sale text-price-sale text-primary">$250</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Organizador 3 Niveles -->
+<div class="flex items-start gap-md p-md bg-surface-container-lowest rounded-xl cart-card-shadow border border-outline-variant group hover:translate-y-[-4px] transition-all duration-200">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A clean, organized three-tier household shelf system shown in a bright, modern laundry room. The organizer is made of high-quality white material, holding neatly folded towels and containers. The lighting is high-key and airy, emphasizing a sense of domestic order and cleanliness. The image follows a structured grid aesthetic with premium fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCix-rpFor_nKNzRy8Q5LjU57JzILNtcs-wP_Tcd6qiQRBVqsNqlPC-OIXI40CFcP7bWX4RPNegdB5SHYehez9LOmnlBRE3TjlvcfMdoHsNOEYZeDSopLWjdl55ZqJ1k0xvKdHtWsDXittPtCv7YO8TNXlSw8No4ZRWcw0fkUaVbRV7Cwcq9T9e2uD6lqfmuoTg2r88QpIbMerJhU43RtOfq18gN6ScQSyqA-JsA-E_xZ8yu39Ifd6wDXkqLMO2-cBgDn0904k4SUA8">
+</div>
+<div class="flex flex-col flex-grow justify-between min-h-[96px]">
+<div>
+<div class="flex justify-between items-start">
+<span class="bg-primary-container text-on-primary-container font-label-md text-label-md px-2 py-0.5 rounded-full mb-1">BW</span>
+<button class="text-on-surface-variant hover:text-error transition-colors active-scale">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Organizador 3 Niveles</h3>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-price-sale text-price-sale text-primary">$799</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Actions -->
+<div class="mt-lg flex justify-center">
+<button class="flex items-center gap-2 px-lg py-2 border border-primary text-primary font-body-md rounded-full hover:bg-surface-container-low transition-all active-scale">
+<span class="material-symbols-outlined text-[18px]">remove_shopping_cart</span>
+                Vaciar carrito
+            </button>
+</div>
+</main>
+<!-- Floating Checkout Bar (Sticky Bottom) -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_16px_rgba(0,0,0,0.05)]">
+<div class="max-w-[1280px] mx-auto px-margin-mobile py-md flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Total del pedido</span>
+<span class="font-headline-lg text-headline-lg text-primary">$1,148.90</span>
+</div>
+<a class="active-scale flex items-center justify-center gap-3 bg-whatsapp text-white font-title-md text-title-md py-4 rounded-xl hover:brightness-110 transition-all shadow-md" href="https://wa.me/yournumber">
+<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.031 6.062C10.518 6.062 9.223 6.643 8.169 7.747C7.114 8.85 6.587 10.198 6.587 11.787C6.587 13.085 6.891 14.168 7.5 15.038L6.446 18.232L9.584 17.151C10.373 17.65 11.218 17.9 12.119 17.9C13.632 17.9 14.927 17.319 16.002 16.157C17.078 14.996 17.616 13.568 17.616 11.874C17.616 10.285 17.063 8.91 15.958 7.747C14.853 6.584 13.544 6.002 12.031 6.002V6.062ZM15.421 14.492C15.228 15.021 14.613 15.39 14.156 15.531C13.717 15.654 13.295 15.707 12.013 15.144C10.432 14.441 9.413 12.788 9.325 12.665C9.255 12.56 8.71 11.821 8.71 11.065C8.71 10.309 9.096 9.939 9.255 9.781C9.395 9.64 9.624 9.57 9.835 9.57C9.905 9.57 9.975 9.57 10.028 9.57C10.186 9.57 10.256 9.588 10.362 9.851C10.485 10.168 10.783 10.923 10.819 11.011C10.854 11.099 10.889 11.205 10.836 11.311C10.783 11.416 10.748 11.486 10.66 11.592C10.572 11.697 10.485 11.785 10.397 11.891C10.318 11.979 10.221 12.075 10.318 12.251C10.415 12.427 10.74 12.972 11.223 13.411C11.847 13.974 12.356 14.15 12.549 14.238C12.725 14.326 12.831 14.308 12.936 14.185C13.042 14.062 13.393 13.623 13.516 13.447C13.639 13.271 13.762 13.306 13.92 13.376C14.078 13.446 14.939 13.886 15.115 13.974C15.291 14.062 15.414 14.114 15.449 14.185C15.484 14.255 15.484 14.413 15.421 14.492Z"></path>
+<path d="M12 0C5.373 0 0 5.373 0 12C0 14.131 0.556 16.131 1.528 17.869L0 24L6.305 22.355C7.994 23.385 9.954 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0ZM12 21.844C10.225 21.844 8.569 21.365 7.144 20.528L6.769 20.306L3.038 21.281L4.031 17.587L3.788 17.2C2.869 15.731 2.344 14.006 2.344 12.15C2.344 6.825 6.675 2.512 12 2.512C17.325 2.512 21.656 6.844 21.656 12.169C21.656 17.494 17.325 21.806 12 21.806V21.844Z"></path>
+</svg>
+                Enviar pedido a Maru
+            </a>
+</div>
+</div>
+<script>
+        // Micro-interaction for item removal simulation
+        document.querySelectorAll('button .material-symbols-outlined').forEach(icon => {
+            if (icon.textContent === 'delete') {
+                icon.closest('button').addEventListener('click', function() {
+                    const card = this.closest('.bg-surface-container-lowest');
+                    card.style.transition = 'all 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateX(50px)';
+                    setTimeout(() => {
+                        card.remove();
+                        // Realistically here we would update the total, but this is a static prototype
+                    }, 300);
+                });
+            }
+        });
+
+        // Hover effect script for product cards
+        const cards = document.querySelectorAll('.bg-surface-container-lowest');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-lg');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-lg');
+            });
+        });
+    </script>
+</body></html>

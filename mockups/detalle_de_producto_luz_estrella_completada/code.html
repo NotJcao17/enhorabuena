@@ -1,0 +1,126 @@
+<!DOCTYPE html><html class="light" lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Work+Sans:wght@600;700&amp;family=Lato:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1a4b8c",
+                        "accent": "#2d7dd2",
+                        "background": "#f8f9fa",
+                        "surface": "#ffffff",
+                        "on-surface": "#1a1c20",
+                        "outline-variant": "#e2e2e8",
+                        "error": "#ba1a1a",
+                        "whatsapp": "#25D366",
+                        "whatsapp-light": "#dcf8c6",
+                        "price-red": "#e63946",
+                        "avail-green": "#28a745"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Lato", "Inter", "sans-serif"],
+                        "title-md": ["Work Sans"],
+                        "headline-lg": ["Work Sans"],
+                        "headline-xl": ["Work Sans"]
+                    }
+                },
+            },
+        }
+    }catch(_e){}</script></head><body class="font-sans text-on-surface">
+<!-- Top Bar -->
+<header class="sticky top-0 w-full h-16 bg-surface flex items-center justify-between px-margin-mobile z-50 border-b border-outline-variant">
+<button class="active-scale p-sm rounded-full hover:bg-background">
+<span class="material-symbols-outlined text-primary" data-original-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-md text-[18px] font-semibold text-primary">Detalle de Producto</h1>
+<div class="relative active-scale p-sm rounded-full hover:bg-background">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-error text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">2</span>
+</div>
+</header>
+<main class="max-w-[390px] mx-auto pb-48">
+<!-- Hero Image Carousel -->
+<div class="relative w-full aspect-square bg-white border-b border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up photograph of a warm star-shaped lamp, glowing softly in a cozy environment, minimalist Betterware catalog style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYIEeaLjI4RdtPUNNgakjdZ06l85BCinOUtNtyoru2cRrTuoe31j7nI4xxs6sBXWfq4Od55DATfvRFV0dKUwPISc-6pJeR7294mCT3QKNpQA5WyoP4XIcc5FwAnW_b2_NIbY7lVS14VE6N89aOHb3rtAgZ92sZdpK5v-e9UR3lQ5dA2_qCT2unZnIUdQEPLcchFJio0EDuAcZQW8_IEr1eJqSow5F4CVIsGUfOpfaX5PZr1iEnpRyHz7B_JK8b03zQpptp4f4TUnm7">
+<!-- Carousel Dots -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+<!-- Product Details -->
+<div class="px-margin-mobile py-lg bg-surface flex flex-col gap-md">
+<!-- Header Info -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase tracking-wide">Recámara</span>
+<span class="text-[12px] font-medium text-avail-green flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-avail-green"></span>
+                        2 disponibles
+                    </span>
+</div>
+<h2 class="font-headline-lg text-[24px] text-primary leading-tight mt-2">Luz Estrella (2 Pzs)</h2>
+<span class="text-[12px] text-slate-400 font-medium tracking-wide">SKU: 26989</span>
+</div>
+<!-- Pricing -->
+<div class="flex items-center gap-3">
+<div class="flex flex-col">
+<span class="text-slate-400 line-through text-[14px] font-medium">$139</span>
+<span class="text-price-red font-headline-xl text-[32px] leading-none">$99.90</span>
+</div>
+<span class="bg-price-red text-white text-[12px] font-bold px-3 py-1 rounded-lg">25% de descuento</span>
+</div>
+<!-- Description -->
+<div class="pt-4 border-t border-outline-variant">
+<h3 class="text-[14px] font-bold text-primary mb-2">Descripción</h3>
+<p class="text-[14px] leading-relaxed text-slate-600">
+                    Ilumina tus espacios con esta suave luz ambiental. Perfecta para mesas de noche o estanterías. Incluye 2 piezas con diseño de estrella y luz cálida.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Actions Container (Sticky) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant px-margin-mobile py-4 shadow-[0_-8px_20px_rgba(0,0,0,0.05)] z-50">
+<div class="max-w-[390px] mx-auto flex flex-col gap-3">
+<!-- Primary CTA -->
+<button class="active-scale w-full h-14 bg-primary text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#153a6d] transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+                Agregar al carrito
+            </button>
+<!-- WhatsApp Consultation Buttons -->
+<div class="flex gap-3">
+<button class="active-scale flex-1 h-12 bg-whatsapp text-white text-[13px] font-bold rounded-xl flex items-center justify-center gap-2 hover:brightness-95">
+<svg fill="currentColor" width="18" height="18" viewBox="0 0 24 24"><path d="M12.031 6.062C10.518 6.062 9.223 6.643 8.169 7.747C7.114 8.85 6.587 10.198 6.587 11.787C6.587 13.085 6.891 14.168 7.5 15.038L6.446 18.232L9.584 17.151C10.373 17.65 11.218 17.9 12.119 17.9C13.632 17.9 14.927 17.319 16.002 16.157C17.078 14.996 17.616 13.568 17.616 11.874C17.616 10.285 17.063 8.91 15.958 7.747C14.853 6.584 13.544 6.002 12.031 6.002V6.062ZM15.421 14.492C15.228 15.021 14.613 15.39 14.156 15.531C13.717 15.654 13.295 15.707 12.013 15.144C10.432 14.441 9.413 12.788 9.325 12.665C9.255 12.56 8.71 11.821 8.71 11.065C8.71 10.309 9.096 9.939 9.255 9.781C9.395 9.64 9.624 9.57 9.835 9.57C9.905 9.57 9.975 9.57 10.028 9.57C10.186 9.57 10.256 9.588 10.362 9.851C10.485 10.168 10.783 10.923 10.819 11.011C10.854 11.099 10.889 11.205 10.836 11.311C10.783 11.416 10.748 11.486 10.66 11.592C10.572 11.697 10.485 11.785 10.397 11.891C10.318 11.979 10.221 12.075 10.318 12.251C10.415 12.427 10.74 12.972 11.223 13.411C11.847 13.974 12.356 14.15 12.549 14.238C12.725 14.326 12.831 14.308 12.936 14.185C13.042 14.062 13.393 13.623 13.516 13.447C13.639 13.271 13.762 13.306 13.92 13.376C14.078 13.446 14.939 13.886 15.115 13.974C15.291 14.062 15.414 14.114 15.449 14.185C15.484 14.255 15.484 14.413 15.421 14.492Z"></path></svg>
+                    Preguntar a Maru
+                </button>
+<button class="active-scale flex-1 h-12 bg-whatsapp-light text-whatsapp text-[13px] font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-opacity-80">
+<svg fill="currentColor" width="18" height="18" viewBox="0 0 24 24"><path d="M12.031 6.062C10.518 6.062 9.223 6.643 8.169 7.747C7.114 8.85 6.587 10.198 6.587 11.787C6.587 13.085 6.891 14.168 7.5 15.038L6.446 18.232L9.584 17.151C10.373 17.65 11.218 17.9 12.119 17.9C13.632 17.9 14.927 17.319 16.002 16.157C17.078 14.996 17.616 13.568 17.616 11.874C17.616 10.285 17.063 8.91 15.958 7.747C14.853 6.584 13.544 6.002 12.031 6.002V6.062ZM15.421 14.492C15.228 15.021 14.613 15.39 14.156 15.531C13.717 15.654 13.295 15.707 12.013 15.144C10.432 14.441 9.413 12.788 9.325 12.665C9.255 12.56 8.71 11.821 8.71 11.065C8.71 10.309 9.096 9.939 9.255 9.781C9.395 9.64 9.624 9.57 9.835 9.57C9.905 9.57 9.975 9.57 10.028 9.57C10.186 9.57 10.256 9.588 10.362 9.851C10.485 10.168 10.783 10.923 10.819 11.011C10.854 11.099 10.889 11.205 10.836 11.311C10.783 11.416 10.748 11.486 10.66 11.592C10.572 11.697 10.485 11.785 10.397 11.891C10.318 11.979 10.221 12.075 10.318 12.251C10.415 12.427 10.74 12.972 11.223 13.411C11.847 13.974 12.356 14.15 12.549 14.238C12.725 14.326 12.831 14.308 12.936 14.185C13.042 14.062 13.393 13.623 13.516 13.447C13.639 13.271 13.762 13.306 13.92 13.376C14.078 13.446 14.939 13.886 15.115 13.974C15.291 14.062 15.414 14.114 15.449 14.185C15.484 14.255 15.484 14.413 15.421 14.492Z"></path></svg>
+                    Preguntar a Mosco
+                </button>
+</div>
+</div>
+</div>
+<script>
+        // Simulate carousel behavior
+        const dots = document.querySelectorAll('.rounded-full.bg-outline-variant, .rounded-full.bg-primary');
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.replace('bg-primary', 'bg-outline-variant'));
+                dot.classList.replace('bg-outline-variant', 'bg-primary');
+            });
+        });
+    </script>
+</body></html>

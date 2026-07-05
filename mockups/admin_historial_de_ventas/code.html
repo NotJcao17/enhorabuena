@@ -1,0 +1,420 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Historial de Ventas - Enhorabuena Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Work+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed-dim": "#a4c9ff",
+                "primary-container": "#00346d",
+                "inverse-surface": "#2f3035",
+                "inverse-primary": "#aac7ff",
+                "error-container": "#ffdad6",
+                "tertiary-fixed": "#ffdcc6",
+                "primary": "#001f46",
+                "on-error": "#ffffff",
+                "background": "#f9f9fe",
+                "on-primary": "#ffffff",
+                "on-secondary-fixed-variant": "#004884",
+                "surface-container": "#eeedf3",
+                "surface-variant": "#e2e2e7",
+                "tertiary": "#371700",
+                "on-surface": "#1a1c20",
+                "on-primary-container": "#7b9ede",
+                "on-secondary-container": "#003e74",
+                "success-stock": "#00346d",
+                "secondary-container": "#6cabfd",
+                "outline-variant": "#c3c6d1",
+                "outline": "#737781",
+                "tertiary-container": "#562900",
+                "surface-tint": "#395e99",
+                "surface-container-low": "#f4f3f9",
+                "on-primary-fixed-variant": "#1e4680",
+                "surface-container-lowest": "#ffffff",
+                "surface": "#f8f9fa",
+                "surface-container-high": "#e8e7ed",
+                "surface-bright": "#f9f9fe",
+                "error": "#ba1a1a",
+                "inverse-on-surface": "#f1f0f6",
+                "primary-fixed-dim": "#aac7ff",
+                "on-tertiary-container": "#d38e5d",
+                "on-tertiary-fixed": "#301400",
+                "secondary": "#015fac",
+                "on-primary-fixed": "#001b3e",
+                "primary-fixed": "#d6e3ff",
+                "on-background": "#1a1c20",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed-dim": "#ffb784",
+                "on-tertiary-fixed-variant": "#6c3a0f",
+                "surface-container-highest": "#e2e2e7",
+                "on-surface-variant": "#434750",
+                "secondary-fixed": "#d4e3ff",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#001c39",
+                "surface-dim": "#dad9df",
+                "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "md": "16px",
+                "lg": "24px",
+                "margin-desktop": "48px",
+                "xs": "4px",
+                "gutter": "16px",
+                "sm": "8px",
+                "margin-mobile": "16px",
+                "xl": "32px"
+            },
+            "fontFamily": {
+                "body-md": ["Inter"],
+                "price-sale": ["Work Sans"],
+                "headline-lg-mobile": ["Work Sans"],
+                "title-md": ["Work Sans"],
+                "headline-lg": ["Work Sans"],
+                "headline-xl": ["Work Sans"],
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"]
+            },
+            "fontSize": {
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "price-sale": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #1a1c20;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #e2e2e8;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c3c6d1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-screen w-64 flex flex-col py-lg z-40 bg-surface border-r border-outline-variant">
+<div class="px-md mb-xl">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Enhorabuena Admin</h1>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-body-md text-body-md">Scanner</span>
+</a>
+<!-- Active Navigation -->
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 mx-2" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">History</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 mx-2 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="sticky top-0 w-full h-16 flex items-center justify-between px-margin-mobile md:pl-72 md:pr-margin-desktop z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Historial de Ventas</h2>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">search</span>
+<div class="relative">
+<span class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-error text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-4 pb-24 md:pl-72 md:pr-margin-desktop px-margin-mobile">
+<!-- Stats Section (Bento Grid Style) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md mb-xl">
+<!-- Total Sold -->
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Total vendido</span>
+<div class="p-2 bg-primary-fixed text-on-primary-fixed rounded-lg">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+</div>
+<div class="mt-4">
+<p class="font-headline-xl text-headline-xl text-primary">52</p>
+<p class="text-on-surface-variant text-label-md">+12% vs mes anterior</p>
+</div>
+</div>
+<!-- Revenue -->
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Ingresos</span>
+<div class="p-2 bg-secondary-fixed text-on-secondary-fixed rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="mt-4">
+<p class="font-headline-xl text-headline-xl text-primary">$18,300</p>
+<p class="text-on-surface-variant text-label-md">Moneda local (ARS)</p>
+</div>
+</div>
+<!-- Best Seller (Image + Info) -->
+<div class="glass-card p-lg rounded-xl lg:col-span-1 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Más vendido</span>
+<h3 class="font-title-md text-title-md mt-1 text-primary">Organizador Acrílico Zen</h3>
+</div>
+<div class="mt-4">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px]">star</span> 14 ventas
+                        </span>
+</div>
+</div>
+<!-- Background Image Decoration -->
+<div class="absolute -right-4 -bottom-4 w-32 h-32 opacity-20 group-hover:scale-110 transition-transform duration-500">
+<img class="w-full h-full object-contain" data-alt="A premium close-up of a minimalist clear acrylic organizer on a bright white marble surface, soft natural lighting from a window creates gentle caustic reflections, high-contrast professional photography, corporate modernist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr2mGBOc3FOqNUoWEy036TzziMSvjmOfuNJWn3HbVjzv4CthFiWB-tU0r8bEetJ9Ice2mQ3PMzWHy2QGQTmuHsk_HC7DXJx2NyKgfPLMV3yYCGLrjvMYC5Y-nrJhfZJQXAZqIPJ2JRhy5lKPy4Vc3PrfMZUrRz6IHsjXYjL2IqdvT1bcfjTQiApTwXFuD4bUP0WvnffDBXcItPREuXt2bApR2C15D8k98PjQsZxa9YHOI1AkSEn9CwUWIdxcsPylkCfiAvOOK6fM_x">
+</div>
+</div>
+</section>
+<!-- Filters Section -->
+<section class="mb-lg">
+<div class="flex flex-wrap items-center gap-4 bg-surface-container-low p-md rounded-xl border border-outline-variant">
+<div class="flex flex-col gap-1 min-w-[140px]">
+<label class="text-label-md font-label-md text-on-surface-variant ml-1">Fecha</label>
+<input class="bg-surface-container-lowest border-outline-variant rounded-lg text-body-md focus:ring-primary focus:border-primary" type="date">
+</div>
+<div class="flex flex-col gap-1 min-w-[140px]">
+<label class="text-label-md font-label-md text-on-surface-variant ml-1">Tipo</label>
+<select class="bg-surface-container-lowest border-outline-variant rounded-lg text-body-md focus:ring-primary focus:border-primary">
+<option>Todos</option>
+<option>BW (Black &amp; White)</option>
+<option>Personal</option>
+</select>
+</div>
+<div class="flex flex-col gap-1 min-w-[140px]">
+<label class="text-label-md font-label-md text-on-surface-variant ml-1">Estado</label>
+<select class="bg-surface-container-lowest border-outline-variant rounded-lg text-body-md focus:ring-primary focus:border-primary">
+<option>Activas</option>
+<option>Revertidas</option>
+</select>
+</div>
+<div class="ml-auto mt-auto flex gap-2">
+<button class="p-2 text-primary hover:bg-surface-container transition-colors rounded-lg">
+<span class="material-symbols-outlined">filter_list_off</span>
+</button>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all">
+                        Aplicar Filtros
+                    </button>
+</div>
+</div>
+</section>
+<!-- Sales Table Container -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant border-b border-outline-variant">
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider">Fecha</th>
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider">Producto</th>
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider">Tipo</th>
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider">SKU</th>
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider">Precio venta</th>
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider">Estado</th>
+<th class="px-lg py-md font-label-md text-label-md uppercase tracking-wider text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Active -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg text-on-surface font-medium whitespace-nowrap">24 Oct, 2023</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up of a premium aesthetic storage bin, minimalist white plastic material, studio lighting, corporate modern photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxmBary3PtjD17-MYMrPqvxkJjyLUT_To3bSubsf5ZdwTTgoSV3yyiPKALSI8jDKX1oNoAfIlW-XZyAdFtebCmm6MgSRbWP1CraGRTusvvxaerlHUcHPBt0o4RfOH5yL_32UVf11cQRHCdi3f8bL8ywCP1frXQENTYQ490H6jGPjIZDAeQBPEsegjNtTm2BpmSn7eDPOhuqrtXnhKdqCrboZO23EZ4CLjIF4-FbQkL5LFYWMyv4lH9D1fMzNugJkUecmRBELvX3o4T">
+</div>
+<span class="text-on-surface font-medium">Contenedor Modular Loft</span>
+</div>
+</td>
+<td class="px-lg py-lg"><span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-xs">BW</span></td>
+<td class="px-lg py-lg text-on-surface-variant">CML-0023</td>
+<td class="px-lg py-lg font-bold text-primary">$3,450</td>
+<td class="px-lg py-lg">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> Activa
+                                </span>
+</td>
+<td class="px-lg py-lg text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-all" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-lg transition-all" title="Revertir">
+<span class="material-symbols-outlined text-[20px]">undo</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Reverted (Tachada) -->
+<tr class="bg-surface-container-low line-through text-on-surface-variant/60 group italic">
+<td class="px-lg py-lg whitespace-nowrap">23 Oct, 2023</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container overflow-hidden flex-shrink-0 grayscale opacity-50">
+<img class="w-full h-full object-cover" data-alt="Industrial style metal basket, black finish, minimalist design, studio product shot, corporate modernist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1nbjSBW_9PAeRmkn1oV9l02KnC0UpHLicgGyKcu4IwTPAN3q5xzGP_Sg6Q6-i9D_GLbcr_K74mIFmqeQM35jmOO1I-lRi9fD8r3D9ZYRLBnDKPlSFBVmHuL0tPCAzjrIG7E4DlzU5EVtsygWQJ1CIEyebEkvxm2yoOfAlAHHbLH5t_2l1DCozCqSQUom6SLrToi1CrZ62d6GOxRNsqqMKBdKRVvcLF4RM1tg0zPoOQLIhTE2SR4Ea1slFuS6eNw8EjPTCltAe5dgI">
+</div>
+<span>Canasta Metálica Urban</span>
+</div>
+</td>
+<td class="px-lg py-lg"><span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-xs grayscale">Pers.</span></td>
+<td class="px-lg py-lg">CMU-9912</td>
+<td class="px-lg py-lg">$1,200</td>
+<td class="px-lg py-lg">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-variant text-on-surface-variant no-underline not-italic">
+                                    Revertida
+                                </span>
+</td>
+<td class="px-lg py-lg text-right no-underline not-italic">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-all" title="Ver detalle">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Active -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg text-on-surface font-medium whitespace-nowrap">22 Oct, 2023</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="High quality clear glass jar with bamboo lid, minimalist kitchen pantry aesthetic, bright lighting, corporate photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD372GPJt2DH4CXpOWFR7u1QC_CUyT6DIbydHt_uJzp0S_wpghFAqrS71Vk5LcpkzfBvQWK3MC8hFa9w3CSqMwovlUZAKssachC9E_bDmCQdYW7mSRL0ZDfX66rBB2T9rUI1PUE2gVq8R3oFW2ZOlSzzVaqULM7hzdItZz-RoqXfsWh8k5Ys74PHWjWRidbMiboEp7Nn0dd2VR0oVU7ckxnVOyhyNh7rZOkXCBTLL5uZYmiJHpV5myPJQ3mGgkBIpTDDOzp3HUODe4V">
+</div>
+<span class="text-on-surface font-medium">Frasco Bambú Elite</span>
+</div>
+</td>
+<td class="px-lg py-lg"><span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-xs">BW</span></td>
+<td class="px-lg py-lg text-on-surface-variant">FBE-4456</td>
+<td class="px-lg py-lg font-bold text-primary">$2,100</td>
+<td class="px-lg py-lg">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> Activa
+                                </span>
+</td>
+<td class="px-lg py-lg text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-all" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-lg transition-all" title="Revertir">
+<span class="material-symbols-outlined text-[20px]">undo</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md bg-surface border-t border-outline-variant flex items-center justify-between">
+<span class="text-label-md text-on-surface-variant">Mostrando 1-10 de 52</span>
+<div class="flex gap-1">
+<button class="p-2 rounded-lg hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded-lg font-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container rounded-lg font-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container rounded-lg font-label-md">3</button>
+<button class="p-2 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface-container-lowest border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                if(!row.classList.contains('line-through')) {
+                    row.style.transform = 'translateY(-1px)';
+                    row.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.05)';
+                }
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = '';
+                row.style.boxShadow = '';
+            });
+        });
+
+        // Simple feedback for action buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 150);
+            });
+        });
+    </script>
+</body></html>
