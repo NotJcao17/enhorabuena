@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation"
 import { auth } from "@/lib/auth"
-import { Sidebar } from "@/components/admin/Sidebar"
-import { Header } from "@/components/admin/Header"
+import { AdminShell } from "@/components/admin/AdminShell"
 import prisma from "@/lib/prisma"
 import { Toaster } from "react-hot-toast"
 
@@ -25,15 +24,11 @@ export default async function AdminLayout({
   })
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50">
+    <>
       <Toaster position="top-right" />
-      <Sidebar />
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <Header lastSync={lastSyncLog?.finishedAt || null} />
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
-        </main>
-      </div>
-    </div>
+      <AdminShell lastSync={lastSyncLog?.finishedAt || null}>
+        {children}
+      </AdminShell>
+    </>
   )
 }

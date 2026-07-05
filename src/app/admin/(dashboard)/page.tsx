@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import Link from "next/link"
 import prisma from "@/lib/prisma"
-import { Package, Store, DollarSign, TrendingUp, ScanBarcode, PlusSquare, LayoutDashboard } from "lucide-react"
+import { Package, Store, DollarSign, TrendingUp, ScanBarcode, PlusSquare, RefreshCw } from "lucide-react"
 
 export default async function AdminDashboard() {
   const startOfMonth = new Date()
@@ -60,6 +60,12 @@ export default async function AdminDashboard() {
 
   const tpSoldThisMonth = tpSalesThisMonth.reduce((sum, s) => sum + s.quantity, 0)
   const tpRevenueThisMonth = tpSalesThisMonth.reduce((sum, s) => sum + (s.quantity * Number(s.salePrice)), 0)
+
+  // Fetch sync logs
+  const recentSyncs = await prisma.syncLog.findMany({
+    take: 5,
+    orderBy: { startedAt: 'desc' }
+  })
 
   return (
     <div className="space-y-6">
@@ -176,6 +182,61 @@ export default async function AdminDashboard() {
               </CardContent>
             </Card>
           </div>
+        </div>
+        
+        {/* Sync History Section */}
+        <div className="space-y-4 md:col-span-2 mt-4">
+          <div className="flex items-center gap-2">
+            <RefreshCw className="h-6 w-6 text-slate-700" />
+            <h3 className="text-xl font-semibold text-slate-900">Últimas Sincronizaciones</h3>
+          </div>
+          
+          <Card>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left">
+                <thead className="bg-slate-50 text-slate-500 border-b">
+                  <tr>
+                    <th className="px-4 py-3 font-medium">Fecha y Hora</th>
+                    <th className="px-4 py-3 font-medium">Estado</th>
+                    <th className="px-4 py-3 font-medium">Nuevos</th>
+                    <th className="px-4 py-3 font-medium">Actualizados</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {recentSyncs.length === 0 ? (
+                    <tr>
+                      <td colSpan={4} className="px-4 py-6 text-center text-slate-500">No hay registros de sincronización</td>
+                    </tr>
+                  ) : (
+                    recentSyncs.map((log) => (
+                      <tr key={log.id} className="hover:bg-slate-50">
+                        <td className="px-4 py-3 text-slate-700">
+                          {new Intl.DateTimeFormat('es-MX', { 
+                            dateStyle: 'medium', timeStyle: 'short', timeZone: 'America/Mexico_City' 
+                          }).format(log.startedAt)}
+                        </td>
+                        <td className="px-4 py-3">
+                          {log.status === 'success' ? (
+                            <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-emerald-100 text-emerald-700">Exitoso</span>
+                          ) : log.status === 'running' ? (
+                            <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-700">En curso</span>
+                          ) : (
+                            <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Error</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-3 text-slate-600 font-medium">
+                          {log.productsCreated > 0 ? `+${log.productsCreated}` : '-'}
+                        </td>
+                        <td className="px-4 py-3 text-slate-600 font-medium">
+                          {log.productsUpdated > 0 ? log.productsUpdated : '-'}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </Card>
         </div>
       </div>
     </div>

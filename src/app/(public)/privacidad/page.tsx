@@ -11,7 +11,7 @@ export default function PrivacidadPage() {
       
       <div className="prose prose-slate max-w-none space-y-6 text-slate-600">
         <p>
-          En <strong>Enhorabuena</strong> ("nosotros", "nuestro" o "la aplicación"), valoramos tu privacidad y estamos comprometidos con la protección de tus datos.
+          En el <strong>Catálogo Digital de Enhorabuena</strong>, valoramos tu privacidad y estamos comprometidos con la protección de tu información.
         </p>
         
         <h2 className="text-xl font-semibold text-slate-800 mt-8 mb-4">1. Recopilación de Información</h2>
@@ -32,11 +32,6 @@ export default function PrivacidadPage() {
         <h2 className="text-xl font-semibold text-slate-800 mt-8 mb-4">4. Analíticas</h2>
         <p>
           Es posible que utilicemos servicios de análisis web básicos para entender cómo interactúan los usuarios con el catálogo (como qué productos son más visitados) con el fin de mejorar nuestro servicio. Esta información es anónima y agregada.
-        </p>
-
-        <h2 className="text-xl font-semibold text-slate-800 mt-8 mb-4">5. Cambios a este Aviso</h2>
-        <p>
-          Nos reservamos el derecho de actualizar este Aviso de Privacidad en cualquier momento. Te recomendamos revisarlo periódicamente.
         </p>
 
         <p className="mt-8 text-sm italic">

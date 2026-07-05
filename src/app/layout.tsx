@@ -17,6 +17,7 @@ const pacifico = Pacifico({
 export const metadata: Metadata = {
   title: "Enhorabuena",
   description: "Catálogo de productos de Betterware y Tienda Personal",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({

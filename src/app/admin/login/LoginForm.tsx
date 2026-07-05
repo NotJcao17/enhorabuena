@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff } from "lucide-react"
+import Link from "next/link"
+import { Eye, EyeOff, ArrowLeft } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
@@ -99,6 +100,12 @@ export function LoginForm() {
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Verificando..." : "Entrar"}
           </Button>
+          <div className="w-full text-center mt-2">
+            <Link href="/" className="text-sm text-slate-500 hover:text-primary transition-colors inline-flex items-center gap-1.5">
+              <ArrowLeft className="w-4 h-4" />
+              Volver al catálogo
+            </Link>
+          </div>
         </CardFooter>
       </form>
     </Card>

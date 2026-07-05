@@ -29,7 +29,7 @@ const navigation = [
   { name: "Configuración", href: "/admin/configuracion", icon: Settings },
 ]
 
-export function Sidebar() {
+export function Sidebar({ onClose }: { onClose?: () => void }) {
   const pathname = usePathname()
 
   return (
@@ -54,6 +54,7 @@ export function Sidebar() {
                   ? "bg-slate-900 text-white" 
                   : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
               )}
+              onClick={onClose}
             >
               <Icon 
                 className={cn(
