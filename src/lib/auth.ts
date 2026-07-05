@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs"
 import prisma from "./prisma"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -12,18 +13,36 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) return null
+        try {
+          if (!credentials?.username || !credentials?.password) {
+            console.error("[AUTH DEBUG] Faltan credenciales");
+            return null;
+          }
 
-        const user = await prisma.adminUser.findUnique({
-          where: { username: credentials.username as string }
-        })
+          console.log(`[AUTH DEBUG] Buscando usuario: ${credentials.username}`);
+          const user = await prisma.adminUser.findUnique({
+            where: { username: credentials.username as string }
+          });
 
-        if (!user) return null
+          if (!user) {
+            console.error(`[AUTH DEBUG] Usuario ${credentials.username} no encontrado en la BD`);
+            return null;
+          }
 
-        const isValid = await bcrypt.compare(credentials.password as string, user.passwordHash)
-        if (!isValid) return null
+          console.log("[AUTH DEBUG] Usuario encontrado, comparando hash...");
+          const isValid = await bcrypt.compare(credentials.password as string, user.passwordHash);
+          
+          if (!isValid) {
+            console.error("[AUTH DEBUG] Contraseña incorrecta");
+            return null;
+          }
 
-        return { id: user.id.toString(), name: user.name, username: user.username }
+          console.log("[AUTH DEBUG] Login exitoso");
+          return { id: user.id.toString(), name: user.name, username: user.username };
+        } catch (error) {
+          console.error("[AUTH DEBUG] Error interno en authorize:", error);
+          throw error;
+        }
       }
     })
   ],
