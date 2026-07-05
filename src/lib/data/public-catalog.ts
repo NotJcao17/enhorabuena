@@ -27,9 +27,11 @@ function calculateBwPrice(
   catalogCompareAt: Prisma.Decimal | null
 ) {
   if (unitCustomPrice !== null) {
+    const custom = Number(unitCustomPrice);
+    const catalog = Number(catalogPrice);
     return {
-      price: Number(unitCustomPrice),
-      originalPrice: null,
+      price: custom,
+      originalPrice: custom < catalog ? catalog : null,
     };
   }
 

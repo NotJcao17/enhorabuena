@@ -52,20 +52,10 @@ export function ScannerClient() {
 
   const playBeep = () => {
     try {
-      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)()
-      const osc = ctx.createOscillator()
-      const gain = ctx.createGain()
-      osc.connect(gain)
-      gain.connect(ctx.destination)
-      osc.type = "sine"
-      osc.frequency.value = 1000 // 1kHz beep
-      gain.gain.setValueAtTime(0, ctx.currentTime)
-      gain.gain.linearRampToValueAtTime(1, ctx.currentTime + 0.01)
-      gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.15)
-      osc.start(ctx.currentTime)
-      osc.stop(ctx.currentTime + 0.15)
+      const audio = new Audio('/beep.mp3')
+      audio.play().catch(() => {})
     } catch (e) {
-      // AudioContext not supported
+      // Ignorar
     }
   }
 
