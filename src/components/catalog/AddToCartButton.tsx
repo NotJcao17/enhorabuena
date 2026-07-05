@@ -46,11 +46,11 @@ export function AddToCartButton({ item }: AddToCartButtonProps) {
       <CartoonButton
         label={
           <div className="flex items-center gap-4 w-full justify-between px-2">
-            <div role="button" onClick={handleRemove} className="p-2 -ml-2 rounded-full hover:bg-black/10 transition-colors active:scale-95 cursor-pointer" title="Quitar 1">
+            <div role="button" onClick={handleRemove} className="p-2 -ml-2 rounded-lg hover:bg-black/10 transition-colors active:scale-95 cursor-pointer" title="Quitar 1">
               <Minus className="w-5 h-5" />
             </div>
             <span className="text-lg">{quantity} en carrito</span>
-            <div role="button" onClick={handleAdd} className="p-2 -mr-2 rounded-full hover:bg-black/10 transition-colors active:scale-95 cursor-pointer" title="Agregar 1">
+            <div role="button" onClick={handleAdd} className="p-2 -mr-2 rounded-lg hover:bg-black/10 transition-colors active:scale-95 cursor-pointer" title="Agregar 1">
               <Plus className="w-5 h-5" />
             </div>
           </div>

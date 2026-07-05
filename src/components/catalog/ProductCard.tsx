@@ -40,7 +40,7 @@ export function ProductCard({
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         {stock > 1 && (
-          <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-bold text-gray-700 shadow-sm">
+          <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-bold text-gray-700 shadow-sm">
             {stock} disp.
           </div>
         )}

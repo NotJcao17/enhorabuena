@@ -4,7 +4,8 @@ export function Header({ lastSync }: { lastSync: Date | null }) {
   const syncText = lastSync 
     ? new Intl.DateTimeFormat("es-MX", { 
         dateStyle: "medium", 
-        timeStyle: "short" 
+        timeStyle: "short",
+        timeZone: "America/Mexico_City"
       }).format(new Date(lastSync))
     : "Nunca"
 

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { Eye, EyeOff } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
@@ -11,12 +12,15 @@ import toast from "react-hot-toast"
 export function LoginForm() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState("")
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setErrorMsg("")
 
     try {
       const res = await signIn("credentials", {
@@ -26,6 +30,7 @@ export function LoginForm() {
       })
 
       if (res?.error) {
+        setErrorMsg("Credenciales incorrectas. Verifica tu usuario y contraseña.")
         toast.error("Credenciales incorrectas")
         setLoading(false)
       } else {
@@ -62,20 +67,35 @@ export function LoginForm() {
               required
             />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 relative">
             <label className="text-sm font-medium leading-none" htmlFor="password">
               Contraseña
             </label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="relative">
+              <Input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </button>
+            </div>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col gap-3">
+          {errorMsg && (
+            <div className="w-full text-sm text-red-500 font-medium text-center">
+              {errorMsg}
+            </div>
+          )}
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Verificando..." : "Entrar"}
           </Button>
