@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Enhorabuena",
   description: "Catálogo de productos de Betterware y Tienda Personal",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/logo128.jpeg",
+  },
 };
 
 export default function RootLayout({
