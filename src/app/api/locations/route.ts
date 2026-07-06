@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server"
 import prisma from "@/lib/prisma"
+import { auth } from "@/lib/auth"
+import { locationSchema } from "@/lib/validations"
+import { z } from "zod"
 
 export async function GET() {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   try {
     const locations = await prisma.location.findMany({
       orderBy: { sortOrder: 'asc' },
@@ -18,9 +23,12 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+
   try {
-    const { name } = await req.json()
-    if (!name) return NextResponse.json({ error: "Name is required" }, { status: 400 })
+    const json = await req.json()
+    const { name } = locationSchema.parse(json)
 
     const lastLocation = await prisma.location.findFirst({
       orderBy: { sortOrder: 'desc' }
@@ -32,6 +40,9 @@ export async function POST(req: Request) {
     })
     return NextResponse.json(location)
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: "Validation Error", details: error.issues }, { status: 400 })
+    }
     return NextResponse.json({ error: "Error creating location" }, { status: 500 })
   }
 }

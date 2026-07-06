@@ -99,20 +99,22 @@ export function ConfigClient() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">WhatsApp de Maru (con código de país, sin +)</label>
+              <label className="text-sm font-medium">WhatsApp de Maru</label>
               <Input 
                 placeholder="Ej. 524774499628"
                 value={configs.whatsapp_maru}
                 onChange={(e) => setConfigs({...configs, whatsapp_maru: e.target.value})}
               />
+              <p className="text-xs text-slate-500">Con código de país, sin +</p>
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">WhatsApp de Mosco (con código de país, sin +)</label>
+              <label className="text-sm font-medium">WhatsApp de Mosco</label>
               <Input 
                 placeholder="Ej. 524777240506"
                 value={configs.whatsapp_mosco}
                 onChange={(e) => setConfigs({...configs, whatsapp_mosco: e.target.value})}
               />
+              <p className="text-xs text-slate-500">Con código de país, sin +</p>
             </div>
           </div>
           <Button onClick={handleSaveConfig} disabled={loading}>

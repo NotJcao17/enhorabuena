@@ -74,67 +74,73 @@ export class BetterwareCatalogProvider implements ICatalogProvider {
           break;
         }
 
-        const upsertPromises = rawProducts.map(async (raw) => {
-          try {
-            const mapped = this.mapProduct(raw);
-            if (!mapped) return;
-            
-            seenSkus.add(mapped.sku);
+        // Procesamiento en lotes para evitar 'Connection Pool Exhaustion' en Neon
+        const batchSize = 10;
+        for (let i = 0; i < rawProducts.length; i += batchSize) {
+          const batch = rawProducts.slice(i, i + batchSize);
+          
+          const batchPromises = batch.map(async (raw) => {
+            try {
+              const mapped = this.mapProduct(raw);
+              if (!mapped) return;
+              
+              seenSkus.add(mapped.sku);
 
-            const isNew = !previouslyActiveSkus.has(mapped.sku);
-            if (isNew) {
-              const exists = await prisma.catalogProduct.findUnique({ where: { sku: mapped.sku } });
-              if (!exists) {
-                newSkus.push(mapped.sku);
-                created++;
+              const isNew = !previouslyActiveSkus.has(mapped.sku);
+              if (isNew) {
+                const exists = await prisma.catalogProduct.findUnique({ where: { sku: mapped.sku } });
+                if (!exists) {
+                  newSkus.push(mapped.sku);
+                  created++;
+                } else {
+                  updated++;
+                }
               } else {
                 updated++;
               }
-            } else {
-              updated++;
+
+              await prisma.catalogProduct.upsert({
+                where: { sku: mapped.sku },
+                update: {
+                  title: mapped.title,
+                  handle: mapped.handle,
+                  bodyHtml: mapped.bodyHtml,
+                  productType: mapped.productType,
+                  priceBetterware: mapped.price,
+                  compareAtPrice: mapped.compareAtPrice,
+                  availableBetterware: mapped.available,
+                  activeBetterware: true,
+                  tags: mapped.tags,
+                  images: mapped.images,
+                  publishedAt: mapped.publishedAt,
+                  betterwareUpdatedAt: mapped.updatedAt,
+                  lastSyncAt: new Date()
+                },
+                create: {
+                  sku: mapped.sku,
+                  shopifyId: mapped.shopifyId,
+                  title: mapped.title,
+                  handle: mapped.handle,
+                  bodyHtml: mapped.bodyHtml,
+                  productType: mapped.productType,
+                  priceBetterware: mapped.price,
+                  compareAtPrice: mapped.compareAtPrice,
+                  activeBetterware: true,
+                  availableBetterware: mapped.available,
+                  tags: mapped.tags,
+                  images: mapped.images,
+                  publishedAt: mapped.publishedAt,
+                  betterwareUpdatedAt: mapped.updatedAt,
+                  lastSyncAt: new Date()
+                }
+              });
+            } catch (err: any) {
+              errors.push(`Error processing SKU ${raw?.variants?.[0]?.sku}: ${err.message}`);
             }
+          });
 
-            return prisma.catalogProduct.upsert({
-              where: { sku: mapped.sku },
-              update: {
-                title: mapped.title,
-                handle: mapped.handle,
-                bodyHtml: mapped.bodyHtml,
-                productType: mapped.productType,
-                priceBetterware: mapped.price,
-                compareAtPrice: mapped.compareAtPrice,
-                availableBetterware: mapped.available,
-                activeBetterware: true,
-                tags: mapped.tags,
-                images: mapped.images,
-                publishedAt: mapped.publishedAt,
-                betterwareUpdatedAt: mapped.updatedAt,
-                lastSyncAt: new Date()
-              },
-              create: {
-                sku: mapped.sku,
-                shopifyId: mapped.shopifyId,
-                title: mapped.title,
-                handle: mapped.handle,
-                bodyHtml: mapped.bodyHtml,
-                productType: mapped.productType,
-                priceBetterware: mapped.price,
-                compareAtPrice: mapped.compareAtPrice,
-                activeBetterware: true,
-                availableBetterware: mapped.available,
-                tags: mapped.tags,
-                images: mapped.images,
-                publishedAt: mapped.publishedAt,
-                betterwareUpdatedAt: mapped.updatedAt,
-                lastSyncAt: new Date()
-              }
-            });
-          } catch (err: any) {
-            errors.push(`Error processing SKU ${raw?.variants?.[0]?.sku}: ${err.message}`);
-          }
-        });
-
-        const validPromises = (await Promise.all(upsertPromises)).filter(p => p);
+          await Promise.all(batchPromises);
+        }
 
         if (rawProducts.length < this.pageSize) {
           hasMore = false;

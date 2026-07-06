@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server"
 import prisma from "@/lib/prisma"
+import { auth } from "@/lib/auth"
+import { saleCustomSchema } from "@/lib/validations"
+import { z } from "zod"
 
 export async function POST(req: Request) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+
   try {
-    const { customProductId, quantity, salePrice, action } = await req.json()
+    const json = await req.json()
+    const { customProductId, quantity, salePrice, action } = saleCustomSchema.parse(json)
     // action: 'sell_available', 'sell_reserved'
     
     const product = await prisma.customProduct.findUnique({ where: { id: customProductId } })
@@ -42,6 +49,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json(sale)
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: "Validation Error", details: error.issues }, { status: 400 })
+    }
     return NextResponse.json({ error: "Error creating sale" }, { status: 500 })
   }
 }

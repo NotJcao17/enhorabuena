@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server"
 import prisma from "@/lib/prisma"
+import { auth } from "@/lib/auth"
+import { locationSchema } from "@/lib/validations"
+import { z } from "zod"
 
 export async function PUT(req: Request, context: { params: Promise<{ id: string }> }) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   try {
     const { id: paramId } = await context.params
     const id = parseInt(paramId)
-    const { name } = await req.json()
-    
-    if (!name) return NextResponse.json({ error: "Name is required" }, { status: 400 })
+    const json = await req.json()
+    const { name } = locationSchema.parse(json)
 
     const location = await prisma.location.update({
       where: { id },
@@ -15,11 +19,17 @@ export async function PUT(req: Request, context: { params: Promise<{ id: string 
     })
     return NextResponse.json(location)
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: "Validation Error", details: error.issues }, { status: 400 })
+    }
     return NextResponse.json({ error: "Error updating location" }, { status: 500 })
   }
 }
 
 export async function DELETE(req: Request, context: { params: Promise<{ id: string }> }) {
+  const session = await auth()
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+
   try {
     const { id: paramId } = await context.params
     const id = parseInt(paramId)

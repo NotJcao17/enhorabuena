@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
@@ -28,7 +28,7 @@ export function LocationsClient() {
   const [nameInput, setNameInput] = useState("")
   const [reassignOption, setReassignOption] = useState<string>("null")
 
-  const fetchLocations = async () => {
+  const fetchLocations = useCallback(async () => {
     try {
       const res = await fetch("/api/locations")
       const data = await res.json()
@@ -38,11 +38,11 @@ export function LocationsClient() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
 
   useEffect(() => {
     fetchLocations()
-  }, [])
+  }, [fetchLocations])
 
   const handleCreate = async () => {
     if (!nameInput.trim()) return
