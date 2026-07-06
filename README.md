@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Enhorabuena - Sistema de Inventario y Tienda 🚀
 
-## Getting Started
+Enhorabuena es una plataforma integral diseñada para la gestión de inventario, ventas y catálogo en línea. Permite administrar productos oficiales (mediante sincronización automática) y productos personalizados (Tienda Personal), todo desde un panel de control seguro y optimizado para dispositivos móviles.
 
-First, run the development server:
+## 🌟 Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Sincronización Automática:** Conexión directa con el catálogo oficial para mantener precios, imágenes y existencias siempre actualizados.
+- **Tienda Personal:** Creación y gestión de productos propios con control de stock, apartados y categorización dinámica.
+- **Punto de Venta Móvil:** Escáner de código de barras integrado, compatible con cámaras de celular para un registro de ventas ultra rápido con retroalimentación háptica y sonora.
+- **Control de Inventario:** Gestión de ubicaciones físicas (estantes, cajas), auditoría de movimientos y sobreescritura de precios manuales.
+- **Historial Financiero:** Registro detallado de ventas, ingresos mensuales e historial de movimientos reversibles.
+- **Catálogo Público Web:** Interfaz moderna, rápida y atractiva para que los clientes exploren los productos disponibles y contacten directamente por WhatsApp.
+- **PWA Ready:** Instalable como aplicación nativa (Progresive Web App) en iOS y Android.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tecnologías
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js 14 (App Router)
+- **Base de Datos:** PostgreSQL (Neon Serverless) con Prisma ORM
+- **Estilos:** Tailwind CSS y variables dinámicas
+- **Autenticación:** NextAuth.js (v5)
+- **Validación de Datos:** Zod
+- **Almacenamiento en la Nube:** Cloudinary (imágenes personalizadas)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Cómo correr el proyecto localmente
 
-## Learn More
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/NotJcao17/enhorabuena.git
+   cd enhorabuena
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Configurar Variables de Entorno:**
+   Crea un archivo `.env` en la raíz del proyecto. Necesitarás las siguientes claves:
+   - `DATABASE_URL` (URL de conexión a PostgreSQL)
+   - `NEXTAUTH_SECRET` (Llave secreta criptográfica para las sesiones)
+   - `NEXTAUTH_URL=http://localhost:3000`
+   - Credenciales de Cloudinary (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`)
+   - `CRON_SECRET` (Para proteger el endpoint de sincronización automatizada)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Preparar la Base de Datos:**
+   ```bash
+   # Sincronizar el esquema con tu base de datos
+   npx prisma db push
+   
+   # Generar el cliente de Prisma
+   npx prisma generate
+   
+   # Sembrar la base de datos (Crea el usuario Admin por defecto)
+   npm run postinstall
+   ```
 
-## Deploy on Vercel
+5. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   El proyecto estará disponible en `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Seguridad
+La plataforma cuenta con validación de datos estricta en el backend mediante Zod y protección de rutas en el servidor, garantizando la integridad de los datos financieros y el control exclusivo del inventario.
