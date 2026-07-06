@@ -45,7 +45,7 @@ export function TiendaClient() {
 
   // Action State
   const [actionModal, setActionModal] = useState<"reserve" | "sell" | null>(null)
-  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null)
+  const [actionMenuId, setActionMenuId] = useState<number | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<CustomProduct | null>(null)
   const [actionQuantity, setActionQuantity] = useState("1")
   const [actionPrice, setActionPrice] = useState("")
@@ -289,36 +289,9 @@ export function TiendaClient() {
                         )}
                         
                         <div className="relative inline-block">
-                          <Button size="sm" variant="ghost" onClick={() => setOpenDropdownId(openDropdownId === p.id ? null : p.id)}>
+                          <Button size="sm" variant="ghost" onClick={() => setActionMenuId(p.id)}>
                             <MoreHorizontal className="w-4 h-4" />
                           </Button>
-                          {openDropdownId === p.id && (
-                            <div className="fixed inset-0 z-40" onClick={() => setOpenDropdownId(null)} />
-                          )}
-                          <div className={`absolute right-0 top-full pt-1 z-50 w-48 ${openDropdownId === p.id ? 'block' : 'hidden'}`}>
-                            <div className="bg-white border rounded-md shadow-lg text-left py-1 relative z-50">
-                              {p.reservedCount > 0 && p.stock > 0 && (
-                                <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50" onClick={() => { setSelectedProduct(p); setActionQuantity("1"); setActionPrice(""); setSellSource("reserved"); setActionModal("sell"); setOpenDropdownId(null); }}>Vender Apartado</button>
-                              )}
-                              <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50" onClick={() => {
-                                setEditingId(p.id)
-                                setName(p.name)
-                                setDescription(p.description || "")
-                                setPrice(p.price)
-                                setStock(p.stock.toString())
-                                setCategory(p.category || "")
-                                if (p.category && !existingCategories.includes(p.category)) {
-                                  setIsNewCategory(true)
-                                } else {
-                                  setIsNewCategory(false)
-                                }
-                                setImages(p.images)
-                                setIsFormOpen(true)
-                                setOpenDropdownId(null)
-                              }}>Editar Producto</button>
-                              <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => { handleDelete(p.id); setOpenDropdownId(null); }}>Eliminar</button>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </td>
@@ -444,6 +417,37 @@ export function TiendaClient() {
           </div>
           <Button onClick={handleSell} className="w-full bg-green-600 hover:bg-green-700">Confirmar Venta</Button>
         </div>
+      </Modal>
+
+      <Modal isOpen={actionMenuId !== null} onClose={() => setActionMenuId(null)} title="Opciones del Producto">
+        {actionMenuId !== null && (() => {
+          const p = products.find(x => x.id === actionMenuId)
+          if (!p) return null
+          return (
+            <div className="space-y-3">
+              {p.reservedCount > 0 && p.stock > 0 && (
+                <Button variant="outline" className="w-full justify-start h-12" onClick={() => { setSelectedProduct(p); setActionQuantity("1"); setActionPrice(""); setSellSource("reserved"); setActionModal("sell"); setActionMenuId(null); }}>Vender Apartado</Button>
+              )}
+              <Button variant="outline" className="w-full justify-start h-12" onClick={() => {
+                setEditingId(p.id)
+                setName(p.name)
+                setDescription(p.description || "")
+                setPrice(p.price)
+                setStock(p.stock.toString())
+                setCategory(p.category || "")
+                if (p.category && !existingCategories.includes(p.category)) {
+                  setIsNewCategory(true)
+                } else {
+                  setIsNewCategory(false)
+                }
+                setImages(p.images)
+                setIsFormOpen(true)
+                setActionMenuId(null)
+              }}>Editar Producto</Button>
+              <Button variant="outline" className="w-full justify-start h-12 text-red-600 border-red-200 hover:text-red-700 hover:bg-red-50" onClick={() => { handleDelete(p.id); setActionMenuId(null); }}>Eliminar Producto</Button>
+            </div>
+          )
+        })()}
       </Modal>
     </Card>
   )

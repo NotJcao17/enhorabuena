@@ -39,7 +39,7 @@ export function HistorialClient() {
   // Modals
   const [selectedSale, setSelectedSale] = useState<Sale | null>(null)
   const [actionModal, setActionModal] = useState<"edit" | "revert" | null>(null)
-  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null)
+  const [actionMenuId, setActionMenuId] = useState<number | null>(null)
   
   // Form states
   const [editPrice, setEditPrice] = useState("")
@@ -213,28 +213,9 @@ export function HistorialClient() {
                       <td className="px-6 py-4 text-right">
                         {!s.isReversed && (
                           <div className="relative inline-block">
-                            <Button size="sm" variant="ghost" onClick={() => setOpenDropdownId(openDropdownId === s.id ? null : s.id)}>
+                            <Button size="sm" variant="ghost" onClick={() => setActionMenuId(s.id)}>
                               <MoreHorizontal className="w-4 h-4" />
                             </Button>
-                            {openDropdownId === s.id && (
-                              <div className="fixed inset-0 z-40" onClick={() => setOpenDropdownId(null)} />
-                            )}
-                            <div className={`absolute right-0 top-full pt-1 z-50 w-40 ${openDropdownId === s.id ? 'block' : 'hidden'}`}>
-                              <div className="bg-white border rounded-md shadow-lg text-left py-1 relative z-50">
-                                <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50" onClick={() => { 
-                                  setSelectedSale(s); 
-                                  setEditPrice(s.salePrice.toString()); 
-                                  setEditNotes(s.notes || ""); 
-                                  setActionModal("edit"); 
-                                  setOpenDropdownId(null);
-                                }}>Editar</button>
-                                <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => { 
-                                  setSelectedSale(s); 
-                                  setActionModal("revert"); 
-                                  setOpenDropdownId(null);
-                                }}>Revertir Venta</button>
-                              </div>
-                            </div>
                           </div>
                         )}
                       </td>
@@ -275,6 +256,29 @@ export function HistorialClient() {
           </div>
           <Button variant="destructive" onClick={handleRevert} className="w-full">Confirmar Reversión</Button>
         </div>
+      </Modal>
+
+      <Modal isOpen={actionMenuId !== null} onClose={() => setActionMenuId(null)} title="Opciones de la Venta">
+        {actionMenuId !== null && (() => {
+          const s = sales.find(x => x.id === actionMenuId)
+          if (!s) return null
+          return (
+            <div className="space-y-3">
+              <Button variant="outline" className="w-full justify-start h-12" onClick={() => { 
+                setSelectedSale(s); 
+                setEditPrice(s.salePrice.toString()); 
+                setEditNotes(s.notes || ""); 
+                setActionModal("edit"); 
+                setActionMenuId(null);
+              }}>Editar Venta</Button>
+              <Button variant="outline" className="w-full justify-start h-12 text-red-600 border-red-200 hover:text-red-700 hover:bg-red-50" onClick={() => { 
+                setSelectedSale(s); 
+                setActionModal("revert"); 
+                setActionMenuId(null);
+              }}>Revertir Venta</Button>
+            </div>
+          )
+        })()}
       </Modal>
     </div>
   )

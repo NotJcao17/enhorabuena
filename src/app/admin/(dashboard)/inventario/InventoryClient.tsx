@@ -40,6 +40,7 @@ export function InventoryClient() {
   // Modals
   const [selectedUnit, setSelectedUnit] = useState<InventoryUnit | null>(null)
   const [actionModal, setActionModal] = useState<"sell" | "location" | "price" | null>(null)
+  const [actionMenuId, setActionMenuId] = useState<number | null>(null)
   
   // Form states
   const [sellPrice, setSellPrice] = useState("")
@@ -322,17 +323,10 @@ export function InventoryClient() {
                           </>
                         )}
                         {u.status !== 'sold' && u.status !== 'withdrawn' && (
-                          <div className="relative group inline-block">
-                            <Button size="sm" variant="ghost"><MoreHorizontal className="w-4 h-4" /></Button>
-                            <div className="absolute right-0 top-full pt-1 hidden group-hover:block z-10 w-40">
-                              <div className="bg-white border rounded-md shadow-lg text-left py-1">
-                                <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50" onClick={() => { setSelectedUnit(u); setNewLocationId(u.location?.id?.toString() || "null"); setActionModal("location") }}>Cambiar ubicación</button>
-                                <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50" onClick={() => { setSelectedUnit(u); setCustomPrice(u.customPrice || ""); setActionModal("price") }}>Editar precio manual</button>
-                                {u.status === 'available' && (
-                                  <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => handleDeleteUnit(u.id)}>Eliminar</button>
-                                )}
-                              </div>
-                            </div>
+                          <div className="relative inline-block">
+                            <Button size="sm" variant="ghost" onClick={() => setActionMenuId(u.id)}>
+                              <MoreHorizontal className="w-4 h-4" />
+                            </Button>
                           </div>
                         )}
                       </div>
@@ -394,6 +388,23 @@ export function InventoryClient() {
           <p className="text-xs text-slate-500">Deja en blanco para usar el precio automático de Betterware.</p>
           <Button onClick={handleSetCustomPrice} className="w-full">Guardar Precio</Button>
         </div>
+      </Modal>
+
+      {/* Action Menu Modal */}
+      <Modal isOpen={actionMenuId !== null} onClose={() => setActionMenuId(null)} title="Opciones del Producto">
+        {actionMenuId !== null && (() => {
+          const u = units.find(x => x.id === actionMenuId)
+          if (!u) return null
+          return (
+            <div className="space-y-3">
+              <Button variant="outline" className="w-full justify-start h-12" onClick={() => { setSelectedUnit(u); setNewLocationId(u.location?.id?.toString() || "null"); setActionModal("location"); setActionMenuId(null); }}>Cambiar ubicación</Button>
+              <Button variant="outline" className="w-full justify-start h-12" onClick={() => { setSelectedUnit(u); setCustomPrice(u.customPrice || ""); setActionModal("price"); setActionMenuId(null); }}>Editar precio manual</Button>
+              {u.status === 'available' && (
+                <Button variant="outline" className="w-full justify-start h-12 text-red-600 border-red-200 hover:text-red-700 hover:bg-red-50" onClick={() => { handleDeleteUnit(u.id); setActionMenuId(null); }}>Eliminar del Inventario</Button>
+              )}
+            </div>
+          )
+        })()}
       </Modal>
     </Card>
   )
