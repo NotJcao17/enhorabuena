@@ -45,6 +45,7 @@ export function TiendaClient() {
 
   // Action State
   const [actionModal, setActionModal] = useState<"reserve" | "sell" | null>(null)
+  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<CustomProduct | null>(null)
   const [actionQuantity, setActionQuantity] = useState("1")
   const [actionPrice, setActionPrice] = useState("")
@@ -287,14 +288,19 @@ export function TiendaClient() {
                           <Button size="sm" variant="default" className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => { setSelectedProduct(p); setActionQuantity("1"); setActionPrice(""); setSellSource("reserved"); setActionModal("sell") }}>Vender Apartado</Button>
                         )}
                         
-                        <div className="relative group inline-block">
-                          <Button size="sm" variant="ghost"><MoreHorizontal className="w-4 h-4" /></Button>
-                          <div className="absolute right-0 top-full pt-1 hidden group-hover:block z-10 w-40">
-                            <div className="bg-white border rounded-md shadow-lg text-left py-1">
+                        <div className="relative inline-block">
+                          <Button size="sm" variant="ghost" onClick={() => setOpenDropdownId(openDropdownId === p.id ? null : p.id)}>
+                            <MoreHorizontal className="w-4 h-4" />
+                          </Button>
+                          {openDropdownId === p.id && (
+                            <div className="fixed inset-0 z-40" onClick={() => setOpenDropdownId(null)} />
+                          )}
+                          <div className={`absolute right-0 top-full pt-1 z-50 w-48 ${openDropdownId === p.id ? 'block' : 'hidden'}`}>
+                            <div className="bg-white border rounded-md shadow-lg text-left py-1 relative z-50">
                               {p.reservedCount > 0 && p.stock > 0 && (
-                                <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50" onClick={() => { setSelectedProduct(p); setActionQuantity("1"); setActionPrice(""); setSellSource("reserved"); setActionModal("sell") }}>Vender Apartado</button>
+                                <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50" onClick={() => { setSelectedProduct(p); setActionQuantity("1"); setActionPrice(""); setSellSource("reserved"); setActionModal("sell"); setOpenDropdownId(null); }}>Vender Apartado</button>
                               )}
-                              <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50" onClick={() => {
+                              <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50" onClick={() => {
                                 setEditingId(p.id)
                                 setName(p.name)
                                 setDescription(p.description || "")
@@ -308,8 +314,9 @@ export function TiendaClient() {
                                 }
                                 setImages(p.images)
                                 setIsFormOpen(true)
+                                setOpenDropdownId(null)
                               }}>Editar Producto</button>
-                              <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => handleDelete(p.id)}>Eliminar</button>
+                              <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => { handleDelete(p.id); setOpenDropdownId(null); }}>Eliminar</button>
                             </div>
                           </div>
                         </div>

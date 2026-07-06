@@ -7,13 +7,9 @@ export async function POST(req: Request) {
     const session = await auth()
     if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
       
-    // Cambiar 'available' -> 'withdrawn'
-    const result = await prisma.inventoryUnit.updateMany({
-      where: { status: 'available' },
-      data: { 
-        status: 'withdrawn',
-        statusChangedAt: new Date()
-      }
+    // Eliminar 'available'
+    const result = await prisma.inventoryUnit.deleteMany({
+      where: { status: 'available' }
     })
     
     return NextResponse.json({ success: true, count: result.count })

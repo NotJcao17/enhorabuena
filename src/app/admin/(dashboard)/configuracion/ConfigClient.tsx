@@ -73,7 +73,7 @@ export function ConfigClient() {
       const res = await fetch("/api/inventory/reset", { method: "POST" })
       if (!res.ok) throw new Error()
       const data = await res.json()
-      toast.success(`Inventario reiniciado: ${data.count} productos retirados`, { id: toastId })
+      toast.success(`Inventario reiniciado: ${data.count} productos eliminados`, { id: toastId })
       setResetConfirmText("")
     } catch {
       toast.error("Error al reiniciar inventario", { id: toastId })
@@ -140,7 +140,7 @@ export function ConfigClient() {
             <AlertTriangle className="w-5 h-5 mr-2" /> Zona de Peligro: Reiniciar Inventario
           </CardTitle>
           <CardDescription className="text-red-600/80">
-            Esta acción pasará todos los productos con estado "Disponible" a "Retirado". Los apartados y vendidos no se verán afectados.
+            Esta acción eliminará por completo todos los productos físicos de Betterware que estén en estado "Disponible". Los apartados y vendidos no se verán afectados.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

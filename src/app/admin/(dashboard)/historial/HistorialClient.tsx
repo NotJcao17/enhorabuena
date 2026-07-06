@@ -39,6 +39,7 @@ export function HistorialClient() {
   // Modals
   const [selectedSale, setSelectedSale] = useState<Sale | null>(null)
   const [actionModal, setActionModal] = useState<"edit" | "revert" | null>(null)
+  const [openDropdownId, setOpenDropdownId] = useState<number | null>(null)
   
   // Form states
   const [editPrice, setEditPrice] = useState("")
@@ -211,22 +212,29 @@ export function HistorialClient() {
                       </td>
                       <td className="px-6 py-4 text-right">
                         {!s.isReversed && (
-                          <div className="relative group inline-block">
-                            <Button size="sm" variant="ghost"><MoreHorizontal className="w-4 h-4" /></Button>
-                            <div className="absolute right-0 top-full pt-1 hidden group-hover:block z-10 w-32">
-                            <div className="bg-white border rounded-md shadow-lg text-left py-1">
-                              <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50" onClick={() => { 
-                                setSelectedSale(s); 
-                                setEditPrice(s.salePrice.toString()); 
-                                setEditNotes(s.notes || ""); 
-                                setActionModal("edit"); 
-                              }}>Editar</button>
-                              <button className="w-full px-4 py-2 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => { 
-                                setSelectedSale(s); 
-                                setActionModal("revert"); 
-                              }}>Revertir Venta</button>
+                          <div className="relative inline-block">
+                            <Button size="sm" variant="ghost" onClick={() => setOpenDropdownId(openDropdownId === s.id ? null : s.id)}>
+                              <MoreHorizontal className="w-4 h-4" />
+                            </Button>
+                            {openDropdownId === s.id && (
+                              <div className="fixed inset-0 z-40" onClick={() => setOpenDropdownId(null)} />
+                            )}
+                            <div className={`absolute right-0 top-full pt-1 z-50 w-40 ${openDropdownId === s.id ? 'block' : 'hidden'}`}>
+                              <div className="bg-white border rounded-md shadow-lg text-left py-1 relative z-50">
+                                <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50" onClick={() => { 
+                                  setSelectedSale(s); 
+                                  setEditPrice(s.salePrice.toString()); 
+                                  setEditNotes(s.notes || ""); 
+                                  setActionModal("edit"); 
+                                  setOpenDropdownId(null);
+                                }}>Editar</button>
+                                <button className="w-full px-4 py-3 text-sm text-left hover:bg-slate-50 text-red-600" onClick={() => { 
+                                  setSelectedSale(s); 
+                                  setActionModal("revert"); 
+                                  setOpenDropdownId(null);
+                                }}>Revertir Venta</button>
+                              </div>
                             </div>
-                          </div>
                           </div>
                         )}
                       </td>
