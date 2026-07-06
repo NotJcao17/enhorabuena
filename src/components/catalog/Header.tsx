@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-surface-tint backdrop-blur transition-colors duration-300">
       <div className="flex h-16 items-center justify-between px-4 max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-3xl font-[family-name:var(--font-pacifico)] text-primary transition-colors duration-300">
+          <span className="text-3xl font-[family-name:var(--font-playfair)] tracking-wider text-primary transition-colors duration-300">
             Enhorabuena
           </span>
         </Link>

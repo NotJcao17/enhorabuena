@@ -35,7 +35,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
   return (
     <div className="flex h-full w-64 flex-col border-r border-slate-200 bg-white">
       <div className="flex h-16 items-center px-6 border-b border-slate-200">
-        <span className="text-xl font-bold text-slate-900 tracking-tight">Enhorabuena</span>
+        <span className="text-2xl font-[family-name:var(--font-bebas)] tracking-wider text-slate-900">Enhorabuena</span>
         <span className="ml-2 text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">Admin</span>
       </div>
       

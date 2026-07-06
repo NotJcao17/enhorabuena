@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato, Pacifico } from "next/font/google";
+import { Lato, Pacifico, Bebas_Neue, Shadows_Into_Light, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const lato = Lato({
@@ -12,6 +12,24 @@ const pacifico = Pacifico({
   variable: "--font-pacifico",
   subsets: ["latin"],
   weight: "400",
+});
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const shadows = Shadows_Into_Light({
+  variable: "--font-shadows",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${lato.variable} ${pacifico.variable} h-full antialiased`}
+      className={`${lato.variable} ${pacifico.variable} ${bebasNeue.variable} ${shadows.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans theme-betterware">{children}</body>
     </html>
