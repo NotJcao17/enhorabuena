@@ -208,13 +208,13 @@ export function InventoryClient() {
     <Card>
       <div className="p-4 border-b space-y-4">
         <div className="flex flex-col xl:flex-row gap-4 justify-between items-start xl:items-center">
-          <div className="flex flex-col sm:flex-row gap-4 flex-wrap w-full">
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
             <Input 
               placeholder="Buscar por nombre o SKU..." 
-            value={search} 
-            onChange={(e) => setSearch(e.target.value)} 
-            className="sm:max-w-xs"
-          />
+              value={search} 
+              onChange={(e) => setSearch(e.target.value)} 
+              className="sm:max-w-xs"
+            />
           <Select 
             value={statusFilter} 
             onChange={(e) => setStatusFilter(e.target.value)}
