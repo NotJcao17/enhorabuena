@@ -11,6 +11,8 @@ interface ImageCarouselProps {
 
 export function ImageCarousel({ images, altPrefix }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   if (!images || images.length === 0) {
     return (
@@ -28,8 +30,36 @@ export function ImageCarousel({ images, altPrefix }: ImageCarouselProps) {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    if (isRightSwipe) {
+      prevImage();
+    }
+  };
+
   return (
-    <div className="relative aspect-square w-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm group">
+    <div 
+      className="relative aspect-square w-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm group"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEndHandler}
+    >
       <Image
         src={images[currentIndex]}
         alt={`${altPrefix} - Imagen ${currentIndex + 1}`}

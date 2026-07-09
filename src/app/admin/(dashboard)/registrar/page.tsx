@@ -10,7 +10,7 @@ import { Search, Plus } from "lucide-react"
 
 export default function RegistrarPage() {
   const [sku, setSku] = useState("")
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState<number | "">(1)
   const [locationId, setLocationId] = useState("null")
   const [locations, setLocations] = useState<{id: number, name: string}[]>([])
   const [product, setProduct] = useState<any>(null)
@@ -42,18 +42,20 @@ export default function RegistrarPage() {
     setIsSubmitting(true)
     const toastId = toast.loading("Registrando unidades...")
     
+    const finalQuantity = typeof quantity === 'number' && quantity > 0 ? quantity : 1;
+    
     try {
       const res = await fetch("/api/inventory", {
         method: "POST",
         body: JSON.stringify({
           sku,
           locationId: locationId === "null" ? null : parseInt(locationId),
-          quantity
+          quantity: finalQuantity
         })
       })
       if (!res.ok) throw new Error()
       
-      toast.success(`${quantity} unidad(es) registrada(s)`, { id: toastId })
+      toast.success(`${finalQuantity} unidad(es) registrada(s)`, { id: toastId })
       setSku("")
       setQuantity(1)
       setProduct(null)
@@ -124,7 +126,15 @@ export default function RegistrarPage() {
                     type="number" 
                     min="1" 
                     value={quantity} 
-                    onChange={(e) => setQuantity(parseInt(e.target.value) || 1)} 
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === "") {
+                        setQuantity("");
+                      } else {
+                        const parsed = parseInt(val);
+                        setQuantity(isNaN(parsed) ? "" : parsed);
+                      }
+                    }} 
                   />
                 </div>
               </div>

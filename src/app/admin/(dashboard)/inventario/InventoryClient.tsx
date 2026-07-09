@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/Input"
 import { Select } from "@/components/ui/Select"
 import { Modal } from "@/components/ui/Modal"
 import toast from "react-hot-toast"
-import { MoreHorizontal, AlertCircle, Edit, MapPin, ExternalLink } from "lucide-react"
+import { MoreHorizontal, AlertCircle, Edit, MapPin, ExternalLink, Download } from "lucide-react"
 
 type InventoryUnit = {
   id: number
@@ -207,9 +207,10 @@ export function InventoryClient() {
   return (
     <Card>
       <div className="p-4 border-b space-y-4">
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Input 
-            placeholder="Buscar por nombre o SKU..." 
+        <div className="flex flex-col xl:flex-row gap-4 justify-between items-start xl:items-center">
+          <div className="flex flex-col sm:flex-row gap-4 flex-wrap w-full">
+            <Input 
+              placeholder="Buscar por nombre o SKU..." 
             value={search} 
             onChange={(e) => setSearch(e.target.value)} 
             className="sm:max-w-xs"
@@ -242,6 +243,11 @@ export function InventoryClient() {
               { value: "red_price", label: "Precio rojo (verificar)" },
             ]}
           />
+          </div>
+          <Button variant="outline" onClick={() => window.open('/api/inventory/export', '_blank')} className="shrink-0 whitespace-nowrap bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100 hover:text-emerald-800">
+            <Download className="w-4 h-4 mr-2" />
+            Exportar Excel
+          </Button>
         </div>
       </div>
       
