@@ -87,7 +87,7 @@ export async function getAvailableBetterwareProducts(): Promise<BetterwareCatalo
     result.push({
       sku: product.sku,
       title: product.title,
-      productType: product.productType,
+      productType: product.productType.trim().toLowerCase(),
       image: imageUrl,
       price: priceData.price,
       originalPrice: priceData.originalPrice,

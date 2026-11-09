@@ -28,7 +28,8 @@ export class BetterwareCatalogProvider implements ICatalogProvider {
       title: raw.title,
       handle: raw.handle,
       bodyHtml: raw.body_html || '',
-      productType: raw.product_type || '',
+      // Betterware mezcla mayúsculas ("Baño" y "baño"); se guarda normalizado
+      productType: (raw.product_type || '').trim().toLowerCase(),
       price: parseFloat(variant.price || '0'),
       compareAtPrice: variant.compare_at_price ? parseFloat(variant.compare_at_price) : null,
       available: variant.available === true,
